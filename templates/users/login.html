@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>giriş yap</title>
+</head>
+<body>
+    <h2>hadi siteye girelimm</h2>
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">GİİİİİİİİR</button>
+    </form>
+    <p>aaaa hesabın yok mu <a href="{% url 'register' %}">o zaman hemen kaydol</a></p>
+</body>
+</html>

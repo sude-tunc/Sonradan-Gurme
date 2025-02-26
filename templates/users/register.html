@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Kayıtlar olundu mu?</title>
+</head>
+<body>
+    <h2>bi zahmet kaydol</h2>
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">bi zahmet kaydol</button>
+    </form>
+    <p>aferin zaten hesap açmışsın <a href="{% url 'login' %}">giriş yappp</a></p>
+</body>
+</html>
