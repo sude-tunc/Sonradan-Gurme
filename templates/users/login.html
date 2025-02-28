@@ -1,15 +1,18 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>giriş yap</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+
+    <title>Girişler Yapılsın</title>
 </head>
 <body>
-    <h2>hadi siteye girelimm</h2>
+    <h2>Hadi siteye giriş yapalım/h2>
     <form method="POST">
         {% csrf_token %}
         {{ form.as_p }}
-        <button type="submit">GİİİİİİİİR</button>
+        <button type="submit">GİR</button>
     </form>
-    <p>aaaa hesabın yok mu <a href="{% url 'register' %}">o zaman hemen kaydol</a></p>
+    <p>Aaaa hesabın yok mu  <a href="{% url 'register' %}">o zaman hemen kaydol</a></p>
 </body>
 </html>

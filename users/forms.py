@@ -5,24 +5,24 @@ from django.contrib.auth.models import User
 
 class UserRegisterForm(forms.ModelForm):
     password = forms.CharField(
-        widget=forms.PasswordInput(attrs={'placeholder': 'çalınamicak bi şifre gir'}),  
-        label="sifren ne"
+        widget=forms.PasswordInput(attrs={'placeholder': 'Çalınmayacak bir şifre girin'}),  
+        label="şifre:"
     )
     password_confirm = forms.CharField(
-        widget=forms.PasswordInput(attrs={'placeholder': 'tkr gir şu şifreyi'}),  
-        label="şifreni LÜTFEN tkr gir"
+        widget=forms.PasswordInput(attrs={'placeholder': 'Tekrar gir'}),  
+        label="şifre(tekrar):"
     )
 
     class Meta:
         model = User
         fields = ['username', 'email', 'password']
         labels = {
-            'username': 'nick in ne olsun',
-            'email': 'mail ini yaz',
+            'username': 'nick:',
+            'email': 'mail:',
         }
         widgets = {
-            'username': forms.TextInput(attrs={'placeholder': 'unique nick yaz'}),
-            'email': forms.EmailInput(attrs={'placeholder': 'kullandıın maili yaz'}),
+            'username': forms.TextInput(attrs={'placeholder': 'nick'}),
+            'email': forms.EmailInput(attrs={'placeholder': 'mail'}),
         }
 
     def clean(self):
@@ -31,7 +31,7 @@ class UserRegisterForm(forms.ModelForm):
         password_confirm = cleaned_data.get("password_confirm")
 
         if password != password_confirm:
-            self.add_error('password_confirm', "Salak, şifreler eşleşmiyor!")
+            self.add_error('password_confirm', "Şifreler eşleşmiyor!!!!")
 
 
 ###############################LOGİN KISMI############################################
@@ -39,11 +39,11 @@ from django.contrib.auth.forms import AuthenticationForm
 
 class UserLoginForm(AuthenticationForm):
     username = forms.CharField(
-        widget=forms.TextInput(attrs={'placeholder': 'Kkullanıcı adını giriver'}),
+        widget=forms.TextInput(attrs={'placeholder': 'kullanıcı adını girin'}),
         label="nick"
     )
     password = forms.CharField(
-        widget=forms.PasswordInput(attrs={'placeholder': 'şifreni girirvenr'}),
+        widget=forms.PasswordInput(attrs={'placeholder': 'şifrenizi girin'}),
         label="sifre"
     )
 
