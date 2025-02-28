@@ -7,12 +7,12 @@
     <title>Kayıtlar olundu mu?</title>
 </head>
 <body>
-    <h2>Kaydol<h2>
+    <h2 class="center">Kaydol<h2>
     <form method="POST">
         {% csrf_token %}
         {{ form.as_p }}
         <button type="submit">Kaydol</button>
     </form>
-    <p>Zaten hesabın var mı <a href="{% url 'login' %}">giriş yap</a></p>
+    <p class="center"> Zaten hesabın var mı <a href="{% url 'login' %}">giriş yap</a></p>
 </body>
 </html>

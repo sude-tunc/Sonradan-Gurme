@@ -7,12 +7,12 @@
     <title>Girişler Yapılsın</title>
 </head>
 <body>
-    <h2>Hadi siteye giriş yapalım/h2>
+    <h2 class="center">Hadi siteye giriş yapalım/h2>
     <form method="POST">
         {% csrf_token %}
         {{ form.as_p }}
         <button type="submit">GİR</button>
     </form>
-    <p>Aaaa hesabın yok mu  <a href="{% url 'register' %}">o zaman hemen kaydol</a></p>
+    <p class="center">Aaaa hesabın yok mu  <a href="{% url 'register' %}">o zaman hemen kaydol</a></p>
 </body>
 </html>
