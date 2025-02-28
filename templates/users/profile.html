@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h2>Profil Bilgileri</h2>
+    <p><strong>Kullanıcı Adı:</strong> {{ user.username }}</p>
+    <p><strong>Kullanıcı ID:</strong> {{ user.id }}</p>
+    <p><strong>E-posta:</strong> {{ user.email }}</p>
+{% endblock %}
