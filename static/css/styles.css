@@ -3,3 +3,35 @@ body {
     color: rgb(47, 89, 3);
     font-family: Arial, sans-serif;
 }
+
+.center {
+    text-align: center;  /* Yazıyı yatay olarak ortalar */
+}
+
+/* burdan snr sı ortalama yapmak için*/
+
+h1, h2, p, form, button {
+    text-align: center; /* Metni yatayda ortala */
+    display: block;      /* Her elemanın tam satır kaplamasını sağla */
+    margin: 10px auto;   /* Ortalamak için otomatik kenar boşluğu ver */
+}
+
+/* Formu tam ortalamak için */
+form {
+    width: 80%;          /* Genişliği %80 yap */
+    max-width: 400px;    /* PC'de çok geniş olmasını önle */
+}
+
+/* Mobil uyumluluk */
+@media (max-width: 768px) {
+    form {
+        width: 90%;      /* Mobilde biraz daha geniş olsun */
+    }
+}
+
+button {
+    display: block;
+    margin: 20px auto;  /* Butonu yatayda ortala */
+    padding: 10px 20px;
+    font-size: 16px;
+}
