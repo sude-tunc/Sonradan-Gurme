@@ -14,6 +14,8 @@ sonradan gurme, kullanıcıların restoranlar hakkında yorum yapabileceği, gur
 - **ne, nerede yenir?**: en iyi yemeklerin önerildiği özel bir sekme.
 - **moderasyon ve güvenlik**: küfür içeren yorumların filtrelenmesi, moderatör onay sistemi.
 
+  
+
 ## proje yapısı
 ```
 sonradan-gurme/
@@ -36,13 +38,6 @@ sonradan-gurme/
 - [ ] ne, nerede yenir? sayfasının tamamlanması
 - [ ] frontend geliştirmeleri (css, javascript)
 
-## katkıda bulunma
-projeye katkıda bulunmak isterseniz:
-1. **fork** yapın
-2. kendi dalınızı (branch) oluşturun: `git checkout -b yeni-ozellik`
-3. değişikliklerinizi işleyin: `git commit -m 'yeni özellik eklendi'`
-4. değişiklikleri gönderin: `git push origin yeni-ozellik`
-5. bir **pull request (pr)** açın!
 
 ## lisans
 mit lisansı altında yayımlanmıştır.
