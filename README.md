@@ -14,6 +14,8 @@ sonradan gurme, kullanıcıların restoranlar hakkında yorum yapabileceği, gur
 - **ne, nerede yenir?**: en iyi yemeklerin önerildiği özel bir sekme.
 - **moderasyon ve güvenlik**: küfür içeren yorumların filtrelenmesi, moderatör onay sistemi.
 
+- 
+
 ## proje yapısı
 ```
 sonradan-gurme/
