@@ -1,9 +1,18 @@
 {% extends "base.html" %}
 
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+
+<head>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+
+    <title>Kayıtlar olundu mu?</title>
+</head>
+
 {% block content %}
     <h2 class="center">Profil Bilgileri</h2>
     <p class="center"><strong>Kullanıcı Adı:</strong> {{ user.username }}</p>
     <p class="center"><strong>Kullanıcı ID:</strong> {{ user.id }}</p>
     <p class="center"><strong>E-posta:</strong> {{ user.email }}</p>
 {% endblock %}
-

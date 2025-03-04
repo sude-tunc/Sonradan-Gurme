@@ -1,24 +1,14 @@
-{% load static %}
 <!DOCTYPE html>
-<html lang="tr">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}Sonradan Gurme{% endblock %}</title>
-    
-    <!-- CSS Bağlantısı -->
-    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <title>{% block title %}My Site{% endblock %}</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
 </head>
 <body>
-    <nav>
-        <a href="/">Ana Sayfa</a> | 
-        <a href="{% url 'profile' %}">Profilim</a> | 
-        <a href="{% url 'logout' %}">Çıkış Yap</a>
-    </nav>
-
-    <div class="container">
-        {% block content %}
-        {% endblock %}
-    </div>
+    {% block content %}
+    {% endblock %}
 </body>
 </html>
