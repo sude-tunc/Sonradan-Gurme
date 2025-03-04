@@ -18,7 +18,7 @@ def register(request):
             user.set_password(form.cleaned_data['password'])
             user.save()
             login(request, user)
-            return redirect('index')  # Kayıttan sonra anasayfaya yönlendirme
+            return redirect('index')  # kayıttan sonra anasayfaya yönlendiiryor ama buraya profil linkini eklicez
     else:
         form = UserRegisterForm()
     
