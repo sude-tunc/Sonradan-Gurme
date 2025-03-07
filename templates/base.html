@@ -1,3 +1,16 @@
+{% extends "base.html" %}
+
+{% block title %}Main Page{% endblock %}
+
+{% block content %}
+    <h1>Welcome to the Main Page</h1>
+    <p>This is the main page of your Django project.</p>
+    <div class="button-container">
+        <a href="{% url 'login' %}" class="btn btn-primary">Login</a>
+        <a href="{% url 'signup' %}" class="btn btn-secondary">Sign Up</a>
+    </div>
+{% endblock %}
+
 <!DOCTYPE html>
 <html lang="tr">
 <head>
