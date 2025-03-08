@@ -136,7 +136,7 @@ STATICFILES_DIRS = [
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-LOGIN_REDIRECT_URL = '/welcome/'
+LOGIN_REDIRECT_URL = '/welcome/' #welcome page i buraya bğaldık
 LOGOUT_REDIRECT_URL = '/'
 
 #EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'

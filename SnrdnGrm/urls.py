@@ -20,16 +20,18 @@ from django.urls import path, include
 from sgapp import views
 from django.contrib.auth import views as auth_views
 
+################################## URL LERİ BURAYA DİZİYORUZ ##################################
+
 urlpatterns = [
     path("sgapp/", include('sgapp.urls')),
     path("admin/", admin.site.urls),
     path("users/", include("users.urls")),
-    path('accounts/', include('django.contrib.auth.urls')),  # For built-in auth views
+    path('accounts/', include('django.contrib.auth.urls')),  
     path('register/', views.register, name='register'),  
-    path('profile/', views.profile, name='profile'),  # Profile page view
-    path('welcome/', views.welcome, name='welcome'),  # Welcome page view
-    path('', views.main_page, name='main_page'),  # Main page URL pattern
-    path('login/', views.custom_login, name='login'),  # Custom login view
+    path('profile/', views.profile, name='profile'),  
+    path('welcome/', views.welcome, name='welcome'),  
+    path('', views.main_page, name='main_page'),  
+    path('login/', views.custom_login, name='login'),  
     path('password_reset/', auth_views.PasswordResetView.as_view(), name='password_reset'),
     path('password_reset/done/', auth_views.PasswordResetDoneView.as_view(), name='password_reset_done'),
     path('reset/<uidb64>/<token>/', auth_views.PasswordResetConfirmView.as_view(), name='password_reset_confirm'),
