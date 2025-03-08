@@ -1,20 +1,14 @@
-<!DOCTYPE html>
-<html>
-<head>
-    {% load static %}
-    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+{% extends "base.html" %}
 
-    <title>Girişler Yapılsın</title>
-</head>
-<body>
-    <h2 class="center">Hadi siteye giriş yapalım/h2>
+{% block title %}Login{% endblock %}
+
+{% block content %}
+    <h2 class="center">Giriş Yap</h2>
     <form method="POST">
         {% csrf_token %}
         {{ form.as_p }}
-        <button type="submit">GİR</button>
+        <button type="submit" class="btn btn-primary">Giriş Yap</button>
     </form>
-    <p class="center">Aaaa hesabın yok mu  <a href="{% url 'register' %}">o zaman hemen kaydol</a></p>
-    <p class="center"><a href="{% url 'password_reset' %}">Şifremi Unuttum</a></p>
-
-</body>
-</html>
+    <p class="center">Hesabınız yok mu? <a href="{% url 'register' %}">Kaydol</a></p>
+    <p class="center"><a href="{% url 'password_reset' %}">Şifrenizi mi unuttunuz?</a></p>
+{% endblock %}

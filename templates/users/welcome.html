@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block title %}Welcome{% endblock %}
+
+{% block content %}
+    <h2 class="center">Welcome, {{ user.username }}!</h2>
+    <p class="center">You have successfully logged in.</p>
+    <div class="button-container center">
+        <a href="{% url 'profile' %}" class="btn btn-primary">View Profile</a>
+    </div>
+{% endblock %}
