@@ -1,14 +1,14 @@
 {% extends "base.html" %}
 
-{% block title %}Login{% endblock %}
+{% block title %}Giirşler Yapılsın{% endblock %}
 
 {% block content %}
     <h2 class="center">Giriş Yap</h2>
     <form method="POST">
         {% csrf_token %}
         {{ form.as_p }}
-        <button type="submit" class="btn btn-primary">Giriş Yap</button>
+        <button type="submit" class="btn btn-primary">Giriş Yapp</button>
     </form>
-    <p class="center">Hesabınız yok mu? <a href="{% url 'register' %}">Kaydol</a></p>
+    <p class="center">Hesabınız yok mu? <a href="{% url 'register' %}">Kaydoll</a></p>
     <p class="center"><a href="{% url 'password_reset' %}">Şifrenizi mi unuttunuz?</a></p>
 {% endblock %}
