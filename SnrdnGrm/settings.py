@@ -121,14 +121,21 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
-STATIC_URL = "static/"
+
+
+
 
 import os
 
+STATIC_URL = '/static/'
+
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static'),
-    BASE_DIR / "static", #bura silinebilir, araştırırlcak
+    os.path.join(BASE_DIR, "static"),
 ]
+
+STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")  # Eğer eksikse ekle
+
+
 
 
 # Default primary key field type
@@ -145,5 +152,5 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587 #güvenli gönnderim için 587 
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'sude11tunc@gmail.com'
-EMAIL_HOST_PASSWORD = 'tvup powx ayde anwp' #güvenlik açığı yaratıyor bunu düzenlicez 
+EMAIL_HOST_PASSWORD = 'tvup powx ayde anwp' #güvenlik açığı yaratıyor bunu düzenlicez # boşluksuz yazılacak 
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER

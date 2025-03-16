@@ -1,13 +1,12 @@
-<!/*projectmat132\SnrdnGrm\templates\main_page.html -->
 {% extends "base.html" %}
 
-{% block title %}💚Sonradan Gurme💚{% endblock %}
-
 {% block content %}
-    <h1>Sonradan Gurme'ye Hoşgeldiniz!!!</h1>
-    <p>Yeni Yemekler Keşfetmeye Hazır Mısın?</p>
-    <div class="button-container center">
-        <a href="{% url 'login' %}" class="btn btn-primary">Giriş Yapp</a>
-        <a href="{% url 'register' %}" class="btn btn-secondary">Kaydoll</a>
+<div class="container">
+    <h1>Sonradan Gurme'ye Hoşgeldiniz!</h1>
+    <p>Yeni yemekler keşfetmeye hazır mısın?</p>
+    <div class="buttons">
+        <a href="/login" class="btn">Giriş Yap</a>
+        <a href="/register" class="btn btn-outline">Kaydol</a>
     </div>
+</div>
 {% endblock %}
