@@ -1,30 +1,90 @@
 /* Genel Stil */
 body {
     font-family: 'Montserrat', sans-serif;
-    background-color: #6d5f48; /* Hafif turuncu arka plan */
+    background: linear-gradient(to right, #f8f1e4, #ede0cf); /* Daha soft bir arka plan */
     color: #333;
-    text-align: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
     margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-/* Konteyner */
+/* Navbar */
+/* Navbar */
+.navbar {
+    background: #6d5f48; /* Koyu kahverengi ton */
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    z-index: 100;
+}
+
+.navbar .logo {
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.navbar .search-box {
+    flex: 1;
+    margin: 0 20px;
+}
+
+.navbar input {
+    width: 100%;
+    padding: 8px;
+    border-radius: 5px;
+    border: none;
+}
+
+.navbar .buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.navbar .btn {
+    text-decoration: none;
+    padding: 8px 15px;
+    font-size: 14px;
+    border-radius: 6px;
+    background: #E65100;
+    color: white;
+    transition: 0.3s;
+}
+
+.navbar .btn:hover {
+    background: #FF6F00;
+}
+
+/* Navbar ile içerik çakışmasını önleme */
+body {
+    padding-top: 70px; /* Navbar sabit olduğu için içerik aşağı kayacak */
+}
+
+/* Ana İçerik */
 .container {
     background: #FFA726; /* Turuncu kutu */
     padding: 40px;
-    border-radius: 12px;
-    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
-    max-width: 400px;
+    border-radius: 15px;
+    box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.15);
+    max-width: 500px;
+    margin: 120px auto 20px auto; /* Navbar’dan dolayı üst boşluk eklendi */
+    text-align: center;
 }
 
 /* Başlık */
 h1 {
     color: #FFFFFF;
-    font-size: 28px;
-    margin-bottom: 10px;
+    font-size: 30px;
+    font-weight: bold;
+    margin-bottom: 15px;
 }
 
 /* Açıklama */
@@ -32,38 +92,76 @@ p {
     font-size: 18px;
     margin-bottom: 20px;
     color: #FFF;
+    font-weight: 500;
 }
 
 /* Butonlar */
 .buttons {
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 15px;
 }
 
 .btn {
     text-decoration: none;
-    padding: 12px 24px;
-    font-size: 16px;
-    border-radius: 8px;
+    padding: 14px 28px;
+    font-size: 18px;
+    border-radius: 6px;  /* Daha az yuvarlak köşeler */
+    font-weight: bold;
     background: #E65100;
     color: white;
-    transition: 0.3s;
+    transition: 0.3s ease-in-out;
     display: inline-block;
     width: 100%;
     text-align: center;
+    box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.1); /* Hafif gölge efekti */
 }
 
 .btn:hover {
     background: #FF6F00;
+    transform: scale(1.03);
+    box-shadow: 0px 5px 12px rgba(0, 0, 0, 0.2);
 }
 
+/* Kaydol Butonu (Düzgün Görünmesi İçin) */
 .btn-outline {
-    background: transparent;
-    border: 2px solid white;
+    background: white; /* Boş görünmemesi için içini doldurduk */
+    border: 2px solid #E65100;
+    color: #E65100;
+    font-weight: bold;
+    transition: 0.3s ease-in-out;
 }
+
+.btn-outline:hover {
+    background: #E65100;
+    color: white;
+    transform: scale(1.03);
+}
+
 
 .btn-outline:hover {
     background: white;
     color: #E65100;
+}
+
+/* Responsive Tasarım */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .navbar .search-box {
+        margin: 10px 0;
+        width: 90%;
+    }
+
+    .buttons {
+        flex-direction: column;
+    }
+
+    .container {
+        width: 90%;
+        padding: 25px;
+    }
 }
