@@ -1,7 +1,7 @@
 /* Genel Stil */
 body {
-    font-family: 'Montserrat', sans-serif;
-    background: linear-gradient(to right, #f8f1e4, #ede0cf); /* Daha soft bir arka plan */
+    font-family: 'Poppins', sans-serif;
+    background: #f4f4e0;
     color: #333;
     margin: 0;
     padding: 0;
@@ -11,157 +11,106 @@ body {
 }
 
 /* Navbar */
-/* Navbar */
 .navbar {
-    background: #6d5f48; /* Koyu kahverengi ton */
+    background: #3a5a40;
     color: white;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 15px 20px;
+    padding: 15px 50px;
     position: fixed;
     width: 100%;
     top: 0;
     left: 0;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
     z-index: 100;
 }
 
 .navbar .logo {
-    font-size: 22px;
+    font-size: 24px;
     font-weight: bold;
 }
 
 .navbar .search-box {
-    flex: 1;
-    margin: 0 20px;
+    background: white;
+    padding: 10px 15px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    width: 300px;
+    box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.15);
+    transition: 0.3s;
 }
 
-.navbar input {
-    width: 100%;
-    padding: 8px;
-    border-radius: 5px;
-    border: none;
+.navbar .search-box:focus {
+    border-color: #3a5a40;
+    box-shadow: 0px 3px 12px rgba(0, 0, 0, 0.3);
 }
 
 .navbar .buttons {
     display: flex;
-    gap: 10px;
+    gap: 15px;
 }
 
 .navbar .btn {
     text-decoration: none;
-    padding: 8px 15px;
+    padding: 12px 20px;
     font-size: 14px;
-    border-radius: 6px;
-    background: #E65100;
-    color: white;
+    border-radius: 5px;
+    font-weight: bold;
     transition: 0.3s;
+    text-transform: uppercase;
 }
 
-.navbar .btn:hover {
-    background: #FF6F00;
+.navbar .btn-primary {
+    background: #f4a261;
+    color: white;
 }
 
-/* Navbar ile içerik çakışmasını önleme */
-body {
-    padding-top: 70px; /* Navbar sabit olduğu için içerik aşağı kayacak */
+.navbar .btn-primary:hover {
+    background: #e76f51;
 }
 
-/* Ana İçerik */
-.container {
-    background: #FFA726; /* Turuncu kutu */
+.navbar .btn-secondary {
+    background: #2a9d8f;
+    color: white;
+}
+
+.navbar .btn-secondary:hover {
+    background: #264653;
+}
+
+/* Hero Section */
+.hero-container {
+    background: white;
     padding: 40px;
     border-radius: 15px;
-    box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.15);
-    max-width: 500px;
-    margin: 120px auto 20px auto; /* Navbar’dan dolayı üst boşluk eklendi */
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+    max-width: 600px;
     text-align: center;
+    margin-top: 100px;
 }
 
-/* Başlık */
-h1 {
-    color: #FFFFFF;
-    font-size: 30px;
+.hero-container h1 {
+    color: #3a5a40;
+    font-size: 28px;
     font-weight: bold;
-    margin-bottom: 15px;
-}
-
-/* Açıklama */
-p {
-    font-size: 18px;
     margin-bottom: 20px;
-    color: #FFF;
-    font-weight: 500;
 }
 
-/* Butonlar */
-.buttons {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-}
-
-.btn {
-    text-decoration: none;
-    padding: 14px 28px;
+.hero-container p {
     font-size: 18px;
-    border-radius: 6px;  /* Daha az yuvarlak köşeler */
-    font-weight: bold;
-    background: #E65100;
-    color: white;
-    transition: 0.3s ease-in-out;
-    display: inline-block;
-    width: 100%;
-    text-align: center;
-    box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.1); /* Hafif gölge efekti */
+    color: #264653;
+    margin-top: 10px;
 }
 
-.btn:hover {
-    background: #FF6F00;
-    transform: scale(1.03);
-    box-shadow: 0px 5px 12px rgba(0, 0, 0, 0.2);
-}
-
-/* Kaydol Butonu (Düzgün Görünmesi İçin) */
-.btn-outline {
-    background: white; /* Boş görünmemesi için içini doldurduk */
-    border: 2px solid #E65100;
-    color: #E65100;
-    font-weight: bold;
-    transition: 0.3s ease-in-out;
-}
-
-.btn-outline:hover {
-    background: #E65100;
-    color: white;
-    transform: scale(1.03);
-}
-
-
-.btn-outline:hover {
-    background: white;
-    color: #E65100;
-}
-
-/* Responsive Tasarım */
 @media (max-width: 768px) {
     .navbar {
         flex-direction: column;
         text-align: center;
+        padding: 15px;
     }
 
-    .navbar .search-box {
-        margin: 10px 0;
+    .hero-container {
         width: 90%;
-    }
-
-    .buttons {
-        flex-direction: column;
-    }
-
-    .container {
-        width: 90%;
-        padding: 25px;
     }
 }
