@@ -1,13 +1,14 @@
 {% extends "base.html" %}
 
-{% block title %}Kayıtlar Olunsun{% endblock %}
-
 {% block content %}
-    <h2 class="center">Kayıt</h2>
+<div class="register-container">
     <form method="POST">
         {% csrf_token %}
         {{ form.as_p }}
-        <button type="submit" class="btn btn-primary">Kaydoll</button>
+
+        <button type="submit">Kaydol</button>
     </form>
-    <p class="center">Zaten hesabın var mı <a href="{% url 'login' %}">Giriş yapp</a></p>
+
+    <p>Zaten hesabın var mı? <a href="{% url 'login' %}">Giriş yap</a></p>
+</div>
 {% endblock %}

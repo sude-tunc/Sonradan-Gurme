@@ -1,14 +1,10 @@
 {% extends "base.html" %}
 
-{% load static %}
-<link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
-
-{% block title %}Profil{% endblock %} #işe yaramio buna bakıcam
-
-
 {% block content %}
-    <h2 class="center">Profil Bilgileri</h2>
-    <p class="center"><strong>Nİck:</strong> {{ user.username }}</p>
-    <p class="center"><strong>ID:</strong> {{ user.id }}</p>
-    <p class="center"><strong>mail:</strong> {{ user.email }}</p>
+<div class="profile-container">
+    <h2>Profil Bilgilerin</h2>
+    <p><strong>Nick:</strong> {{ user.username }}</p>
+    <p><strong>ID:</strong> {{ user.id }}</p>
+    <p><strong>Mail:</strong> {{ user.email }}</p>
+</div>
 {% endblock %}

@@ -1,14 +1,19 @@
 {% extends "base.html" %}
 
-{% block title %}Giirşler Yapılsın{% endblock %}
-
 {% block content %}
-    <h2 class="center">Giriş Yap</h2>
+<div class="login-container">
     <form method="POST">
         {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit" class="btn btn-primary">Giriş Yapp</button>
+        <label for="username">Username:</label>
+        <input type="text" name="username" required>
+
+        <label for="password">Password:</label>
+        <input type="password" name="password" required>
+
+        <button type="submit">Giriş Yap</button>
     </form>
-    <p class="center">Hesabınız yok mu? <a href="{% url 'register' %}">Kaydoll</a></p>
-    <p class="center"><a href="{% url 'password_reset' %}">Şifrenizi mi unuttunuz?</a></p>
+
+    <p>Hesabınız yok mu? <a href="{% url 'register' %}">Kaydol</a></p>
+    <a href="{% url 'password_reset' %}">Şifrenizi mi unuttunuz?</a>
+</div>
 {% endblock %}

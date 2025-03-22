@@ -4,8 +4,9 @@
 
 {% block content %}
     <h2 class="center">Sonradan Gurmeye hoşgeldin, {{ user.username }}!</h2>
-    <p class="center">Yorup yap,Yemek keşfet, Değerlendir.</p>
-    <div class="button-container center">
-        <a href="{% url 'profile' %}" class="btn btn-primary">Profilini Görüntüle!!!</a>
+    <div class="welcome-container">
+        <p>Yorum yap, Yemek keşfet, Değerlendir.</p>
+        <a href="{% url 'profile' %}">Profilini Görüntüle</a>
     </div>
+      
 {% endblock %}
