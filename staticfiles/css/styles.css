@@ -1,74 +1,14 @@
-/* Genel Stil */
+/* Temel Ayarlar */
 body {
     font-family: 'Montserrat', sans-serif;
-    background-color: #FFF3E0; /* Hafif turuncu arka plan */
+    background-color: #FFF3E0;
     color: #333;
     text-align: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
     margin: 0;
+    padding: 0;
 }
 
-/* Konteyner */
-.container {
-    background: #FFA726; /* Turuncu kutu */
-    padding: 40px;
-    border-radius: 12px;
-    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
-    max-width: 400px;
-}
-
-/* Başlık */
-h1 {
-    color: #FFFFFF;
-    font-size: 28px;
-    margin-bottom: 10px;
-}
-
-/* Açıklama */
-p {
-    font-size: 18px;
-    margin-bottom: 20px;
-    color: #FFF;
-}
-
-/* Butonlar */
-.buttons {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-}
-
-.btn {
-    text-decoration: none;
-    padding: 12px 24px;
-    font-size: 16px;
-    border-radius: 8px;
-    background: #E65100;
-    color: white;
-    transition: 0.3s;
-    display: inline-block;
-    width: 100%;
-    text-align: center;
-}
-
-.btn:hover {
-    background: #FF6F00;
-}
-
-.btn-outline {
-    background: transparent;
-    border: 2px solid white;
-}
-
-.btn-outline:hover {
-    background: white;
-    color: #E65100;
-}
-
-/* mod şeysi*/
+/* Dashboard */
 .dashboard-container {
     padding: 30px;
     max-width: 900px;
@@ -78,60 +18,105 @@ p {
     box-shadow: 0 0 10px rgba(0,0,0,0.05);
 }
 
+.dashboard-container h1 {
+    font-size: 28px;
+    color: #2e7d32;
+}
+
+.dashboard-container p {
+    color: #555;
+    font-size: 18px;
+}
+
+/* Kartlar */
 .card-container {
     display: flex;
-    gap: 20px;
-    margin-top: 30px;
+    gap: 30px;
+    margin-top: 40px;
     flex-wrap: wrap;
+    justify-content: center;
 }
 
-.card {
-    flex: 1;
-    min-width: 250px;
-    background-color: #e1f5e9;
-    padding: 20px;
-    border-radius: 12px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+.home-card {
+    background-color: #ffffff;
+    border-radius: 16px;
+    padding: 30px 20px;
+    width: 280px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
 }
 
-.card h3 {
-    margin-bottom: 10px;
+.home-card:hover {
+    transform: translateY(-5px);
 }
 
-.btn {
+.card-icon {
+    font-size: 36px;
+    margin-bottom: 15px;
+}
+
+.home-card h3 {
+    margin: 10px 0;
+    font-size: 20px;
+    color: #2e7d32;
+}
+
+.home-card p {
+    color: #666;
+    font-size: 15px;
+    margin-bottom: 15px;
+}
+
+/* Kart linkleri (buton gibi görünsün) */
+.card-link {
     display: inline-block;
-    margin-top: 10px;
-    background-color: #4caf50;
+    padding: 10px 20px;
+    background-color: #ff6f00;
     color: white;
-    padding: 8px 16px;
-    border-radius: 6px;
+    border-radius: 8px;
     text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.2s ease;
 }
 
-.btn:hover {
-    background-color: #45a049;
+.card-link:hover {
+    background-color: #e65100;
+    color: white;
 }
 
-.gurme-card {
-    background-color: #fff1e6;
+/* Navbar Logo */
+.logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background-color: #4CAF50;
+    padding: 8px 16px;
+    border-radius: 30px;
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
-.gurme-btn {
-    background-color: #ff704d;
+.logo:hover {
+    background-color: #43a047;
+    transform: translateY(-2px);
+    color: #fff;
 }
 
-.gurme-btn:hover {
-    background-color: #e65c3f;
+/* Responsive */
+@media (max-width: 768px) {
+    .card-container {
+        flex-direction: column;
+        align-items: center;
+    }
 }
-
-.user-card {
-    background-color: #e6f2ff;
+.icon {
+    font-size: 20px;
 }
-
-.user-btn {
-    background-color: #3399ff;
-}
-
-.user-btn:hover {
-    background-color: #1a8cff;
+.brand-text {
+    font-size: 18px;
 }

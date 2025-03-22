@@ -6,16 +6,25 @@
     <p>Bugün yeni lezzetler keşfetmeye ne dersin?</p>
 
     <div class="card-container">
-        <div class="card user-card">
-            <h3>📖 Yorumları Oku</h3>
+        <div class="home-card">
+            <div class="card-icon">📖</div>
+            <h3>Yorumları Oku</h3>
             <p>Diğer kullanıcıların deneyimlerini keşfet.</p>
-            <a href="#" class="btn user-btn">Yorumları Gör</a>
+            <a href="{% url 'yorumlar' %}" class="card-link">Yorumları Gör</a>
         </div>
 
-        <div class="card user-card">
-            <h3>🍴 Restoranları İncele</h3>
+        <div class="home-card">
+            <div class="card-icon">🍴</div>
+            <h3>Restoranları İncele</h3>
             <p>Popüler mekanlara göz at, yeni favorini bul!</p>
-            <a href="#" class="btn user-btn">Keşfet</a>
+            <a href="{% url 'restoranlar' %}" class="card-link">Keşfet</a>
+        </div>
+
+        <div class="home-card">
+            <div class="card-icon">👑</div>
+            <h3>Gurme Ol</h3>
+            <p>Yorumlarını kanıtla, gurmelik için başvur!</p>
+            <a href="{% url 'gurme_basvuru' %}" class="card-link">Başvur</a>
         </div>
     </div>
 </div>

@@ -72,3 +72,13 @@ def gurme_dashboard(request):
 @login_required
 def home_view(request):
     return render(request, 'home.html')
+
+def yorumlar_view(request):
+    return render(request, 'yorumlar.html')
+
+def restoranlar_view(request):
+    return render(request, 'restoranlar.html')  # restoranlar.html senin sayfa dosyanın ismi olacak
+
+def gurme_basvuru_view(request):
+    return render(request, 'gurme_basvuru.html')
+
