@@ -1,7 +1,22 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h2>🍽️ Gurme Paneli</h2>
-<p>Yeni restoranları puanla, yorumlarını yükle, lezzetli bir yolculuğa çık!</p>
-<a href="#">Yorum Yap</a> | <a href="#">Restoranları Keşfet</a>
+<div class="dashboard-container">
+    <h1>🍽️ Gurme Paneli</h1>
+    <p>Hoş geldin {{ user.username }}! Lezzet avına çıkmaya hazır mısın?</p>
+
+    <div class="card-container">
+        <div class="card gurme-card">
+            <h3>✨ Yeni Restoranlar</h3>
+            <p>Bugün 3 yeni mekan eklendi.</p>
+            <a href="#" class="btn gurme-btn">Keşfet</a>
+        </div>
+
+        <div class="card gurme-card">
+            <h3>📝 Yorum Yaz</h3>
+            <p>Deneyimlerini paylaş ve kullanıcıları bilgilendir!</p>
+            <a href="#" class="btn gurme-btn">Yorum Ekle</a>
+        </div>
+    </div>
+</div>
 {% endblock %}

@@ -111,3 +111,27 @@ p {
 .btn:hover {
     background-color: #45a049;
 }
+
+.gurme-card {
+    background-color: #fff1e6;
+}
+
+.gurme-btn {
+    background-color: #ff704d;
+}
+
+.gurme-btn:hover {
+    background-color: #e65c3f;
+}
+
+.user-card {
+    background-color: #e6f2ff;
+}
+
+.user-btn {
+    background-color: #3399ff;
+}
+
+.user-btn:hover {
+    background-color: #1a8cff;
+}

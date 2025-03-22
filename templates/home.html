@@ -1,6 +1,22 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h2>🏠 Ana Sayfa</h2>
-<p>Hoş geldin {{ user.username }}! Yorumları oku, gurmeleri takip et!</p>
+<div class="dashboard-container">
+    <h1>👋 Merhaba {{ user.username }}!</h1>
+    <p>Bugün yeni lezzetler keşfetmeye ne dersin?</p>
+
+    <div class="card-container">
+        <div class="card user-card">
+            <h3>📖 Yorumları Oku</h3>
+            <p>Diğer kullanıcıların deneyimlerini keşfet.</p>
+            <a href="#" class="btn user-btn">Yorumları Gör</a>
+        </div>
+
+        <div class="card user-card">
+            <h3>🍴 Restoranları İncele</h3>
+            <p>Popüler mekanlara göz at, yeni favorini bul!</p>
+            <a href="#" class="btn user-btn">Keşfet</a>
+        </div>
+    </div>
+</div>
 {% endblock %}
