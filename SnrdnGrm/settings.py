@@ -143,7 +143,8 @@ STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")  # Eğer eksikse ekle
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-LOGIN_REDIRECT_URL = '/welcome/' #welcome page i buraya bğaldık
+LOGIN_REDIRECT_URL = '/redirect-login/'  # artık welcome değil, role göre yönlendirme
+
 LOGOUT_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
 
@@ -156,3 +157,5 @@ EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'sude11tunc@gmail.com'
 EMAIL_HOST_PASSWORD = 'tvup powx ayde anwp' #güvenlik açığı yaratıyor bunu düzenlicez # boşluksuz yazılacak 
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+
+AUTH_USER_MODEL = 'sgapp.User'

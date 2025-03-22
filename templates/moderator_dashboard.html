@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="dashboard-container">
+    <h1>👑 Moderatör Paneli</h1>
+    <p>Hoş geldin {{ user.username }}! Onay bekleyen yorumları aşağıdan yönetebilirsin.</p>
+
+    <div class="card-container">
+        <div class="card">
+            <h3>📥 Bekleyen Yorumlar</h3>
+            <p>5 yorum inceleme bekliyor.</p>
+            <a href="#" class="btn">Yorumları Gör</a>
+        </div>
+
+        <div class="card">
+            <h3>👥 Gurme Başvuruları</h3>
+            <p>2 yeni başvuru var.</p>
+            <a href="#" class="btn">Başvuruları İncele</a>
+        </div>
+    </div>
+</div>
+{% endblock %}
