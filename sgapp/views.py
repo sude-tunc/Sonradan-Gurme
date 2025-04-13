@@ -1,3 +1,5 @@
+from .models import Application
+
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.contrib.auth import login, authenticate
@@ -81,4 +83,51 @@ def restoranlar_view(request):
 
 def gurme_basvuru_view(request):
     return render(request, 'gurme_basvuru.html')
+
+from .models import Review  # Model adın buysa
+from django.shortcuts import render
+
+
+
+from .models import Review
+
+def yorumlar_view(request):
+    yorumlar = Review.objects.filter(status='approved').order_by('-created_at')
+    return render(request, 'yorumlar.html', {'yorumlar': yorumlar})
+
+
+
+def basvuru_inceleme_view(request):
+    basvurular = Application.objects.filter(status='pending')
+    return render(request, 'basvuru_inceleme.html', {'basvurular': basvurular})
+
+def yorum_inceleme_view(request):
+    yorumlar = Review.objects.filter(status='pending')
+    return render(request, 'yorum_inceleme.html', {'yorumlar': yorumlar})
+
+def yorum_ekle_view(request):
+    # form logic burada olacak
+    return render(request, 'yorum_ekle.html')
+
+from django.shortcuts import render, redirect
+from .models import Review
+
+def yorum_ekle_view(request):
+    if request.method == 'POST':
+        restoran = request.POST.get('restaurant_name')
+        rating = request.POST.get('rating')
+        comment = request.POST.get('comment')
+
+        Review.objects.create(
+            user=request.user,
+            restaurant_name=restoran,
+            rating=rating,
+            comment=comment,
+            status='pending'
+        )
+        return redirect('home')  # veya nereye yönlendirmek istersen
+
+    return render(request, 'yorum_ekle.html')
+
+
 

@@ -10,7 +10,7 @@ class CustomUserCreationForm(UserCreationForm):
     )
 
     role = forms.ChoiceField(
-        choices=User.ROLE_CHOICES,
+        choices=User.ROLE_CHOICES,  # 💥 Eksik olan buydu!
         label="Kullanıcı Rolü"
     )
 

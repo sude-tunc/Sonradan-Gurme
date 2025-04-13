@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>👑 Gurme Başvurusu</h2>
+<form method="post">
+    {% csrf_token %}
+    <textarea name="neden" placeholder="Neden gurme olmak istiyorsun?" required></textarea><br><br>
+    <button type="submit">Başvur</button>
+</form>
+{% endblock %}

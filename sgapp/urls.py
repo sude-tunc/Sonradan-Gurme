@@ -18,6 +18,12 @@ urlpatterns = [
     path('restoranlar/', views.restoranlar_view, name='restoranlar'),  # bu satır önemli
     path('gurme-basvuru/', views.gurme_basvuru_view, name='gurme_basvuru'),
     path('home/', views.home_view, name='home'),
+    path('yorum-inceleme/', views.yorum_inceleme_view, name='yorum_inceleme'),
+    path('basvuru-inceleme/', views.basvuru_inceleme_view, name='basvuru_inceleme'),
+    path('restoranlar/', views.restoranlar_view, name='restoranlar'),
+    path('yorum-ekle/', views.yorum_ekle_view, name='yorum_ekle'),
+
+
 
 
     path('redirect-login/', login_redirect_view, name='login_redirect'),  # Giriş sonrası yönlendirme
@@ -27,3 +33,12 @@ urlpatterns = [
     path('gurme/', gurme_dashboard, name='gurme_dashboard'),
     path('home/', home_view, name='home'),  # Normal kullanıcı paneli
 ]
+
+def yorumlar_view(request):
+    return render(request, 'yorumlar.html')
+
+def restoranlar_view(request):
+    return render(request, 'restoranlar.html')
+
+def gurme_basvuru_view(request):
+    return render(request, 'gurme_basvuru.html')

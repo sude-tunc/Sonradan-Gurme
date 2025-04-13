@@ -385,4 +385,61 @@ body {
 .card .btn:hover {
     background-color: #1b5e20;
 }
+.yorum-karti {
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    padding: 16px;
+    margin-bottom: 16px;
+}
+.yorum-formu-container {
+    max-width: 500px;
+    margin: 60px auto;
+    background-color: #f0fdf4;
+    padding: 30px;
+    border-radius: 16px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    font-family: Arial, sans-serif;
+}
+
+.yorum-formu-container h2 {
+    text-align: center;
+    color: #2f855a;
+    margin-bottom: 25px;
+}
+
+.yorum-formu-container label {
+    display: block;
+    margin-top: 15px;
+    font-weight: bold;
+    color: #333;
+}
+
+.yorum-formu-container input[type="text"],
+.yorum-formu-container select,
+.yorum-formu-container textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-sizing: border-box;
+}
+
+.yorum-formu-container button[type="submit"] {
+    background-color: #2f855a;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    margin-top: 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    width: 100%;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.yorum-formu-container button[type="submit"]:hover {
+    background-color: #276749;
+}
 

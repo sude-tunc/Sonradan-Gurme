@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>📝 Yorumlar</h2>
+
+{% if yorumlar %}
+    {% for yorum in yorumlar %}
+        <div class="yorum-karti">
+            <strong>{{ yorum.user.username }}</strong> 
+            <span>({{ yorum.created_at|date:"d.m.Y H:i" }})</span><br>
+            ⭐ {{ yorum.rating }}/5<br>
+            <p>{{ yorum.comment }}</p>
+        </div>
+    {% endfor %}
+{% else %}
+    <p>Henüz onaylı yorum bulunamadı.</p>
+{% endif %}
+
+{% endblock %}

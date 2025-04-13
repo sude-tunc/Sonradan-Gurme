@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Gurme Başvuruları</h2>
+{% for basvuru in basvurular %}
+  <div>
+    <strong>{{ basvuru.user.username }}</strong><br>
+    <p>{{ basvuru.application_text }}</p>
+  </div>
+{% endfor %}
+{% endblock %}

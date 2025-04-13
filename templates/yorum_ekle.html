@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="yorum-formu-container">
+    <h2>🍽️ Yorum Ekle</h2>
+    <form method="post">
+        {% csrf_token %}
+        
+        <label for="restaurant">Restoran Adı:</label>
+        <input type="text" name="restaurant_name" placeholder="Restoran ismini gir..." required>
+
+        <label for="rating">Puan:</label>
+        <select name="rating">
+            {% for i in "12345" %}
+            <option value="{{ i }}">{{ i }}</option>
+            {% endfor %}
+        </select>
+
+        <label for="comment">Yorum:</label>
+        <textarea name="comment" placeholder="Deneyimini yaz..." rows="5" required></textarea>
+
+        <button type="submit">Gönder</button>
+    </form>
+</div>
+{% endblock %}
