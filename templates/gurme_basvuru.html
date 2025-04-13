@@ -1,9 +1,15 @@
 {% extends "base.html" %}
+
 {% block content %}
-<h2>👑 Gurme Başvurusu</h2>
-<form method="post">
-    {% csrf_token %}
-    <textarea name="neden" placeholder="Neden gurme olmak istiyorsun?" required></textarea><br><br>
-    <button type="submit">Başvur</button>
-</form>
+<div class="basvuru-form-container">
+    <h2>🥂 Gurme Başvuru Formu</h2>
+    <form method="post">
+        {% csrf_token %}
+
+        <label for="neden">Neden gurme olmak istiyorsun?</label>
+        <textarea name="aciklama" placeholder="Kendini tanıt, gastronomiye olan ilgin nedir?" rows="6" required></textarea>
+
+        <button type="submit">Başvur</button>
+    </form>
+</div>
 {% endblock %}
