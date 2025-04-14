@@ -11,6 +11,8 @@ class User(AbstractUser):
     role = models.CharField(max_length=10, choices=ROLE_CHOICES, default='normal')
     bio = models.TextField(blank=True)
     profile_picture = models.ImageField(upload_to='profiles/', null=True, blank=True)
+    favorite_dish = models.CharField(max_length=100, blank=True, null=True)
+
 
     def __str__(self):
         return self.username

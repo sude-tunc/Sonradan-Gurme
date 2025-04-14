@@ -198,5 +198,37 @@ def kullanici_basvurularim(request):
     my_applications = Application.objects.filter(user=request.user)
     return render(request, 'kullanici_basvurularim.html', {'applications': my_applications})
 
+from django.contrib.auth.decorators import login_required
+from django.shortcuts import render, redirect
+from .forms import ProfileUpdateForm
 
+@login_required
+def update_profile_view(request):
+    user = request.user
+    if request.method == 'POST':
+        form = ProfileUpdateForm(request.POST, instance=user)
+        if form.is_valid():
+            form.save()
+            return redirect('profile')
+    else:
+        form = ProfileUpdateForm(instance=user)
+    
+    return render(request, 'users/update_profile.html', {'form': form})
+
+from django.contrib.auth.decorators import login_required
+from django.shortcuts import render, redirect
+from .forms import ProfileUpdateForm
+
+@login_required
+def update_profile_view(request):
+    user = request.user
+    if request.method == 'POST':
+        form = ProfileUpdateForm(request.POST, instance=user)
+        if form.is_valid():
+            form.save()
+            return redirect('profile')
+    else:
+        form = ProfileUpdateForm(instance=user)
+    
+    return render(request, 'users/update_profile.html', {'form': form})
 

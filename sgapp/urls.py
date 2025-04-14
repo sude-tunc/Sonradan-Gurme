@@ -1,5 +1,6 @@
 from django.urls import path
 from django.contrib.auth.views import LoginView
+from django.contrib.auth.views import LogoutView
 from . import views
 from .views import (
     index,
@@ -25,7 +26,8 @@ urlpatterns = [
     path('basvuru-degisitir/<int:basvuru_id>/', views.basvuru_durum_degistir_view, name='basvuru_durum_degistir'),
     path('basvuru-durumum/', views.basvuru_durumu_view, name='basvuru_durumu'),
     path('basvurularim/', views.kullanici_basvurularim, name='kullanici-basvurularim'),
-
+    path('logout/', LogoutView.as_view(next_page='login'), name='logout'),
+    path('profil/guncelle/', views.update_profile_view, name='update_profile'),
 
 
 

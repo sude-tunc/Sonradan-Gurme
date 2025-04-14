@@ -33,3 +33,15 @@ class CustomUserCreationForm(UserCreationForm):
                 'unique': "Bu kullanıcı adı zaten alınmış.",
             },
         }
+from django import forms
+from .models import User
+
+class ProfileUpdateForm(forms.ModelForm):
+    class Meta:
+        model = User
+        fields = ['bio', 'favorite_dish']
+        widgets = {
+            'bio': forms.Textarea(attrs={'rows': 4, 'placeholder': 'Kendini anlat...'}),
+            'favorite_dish': forms.TextInput(attrs={'placeholder': 'En sevdiğin yemek'}),
+        }
+
