@@ -35,16 +35,15 @@ class Review(models.Model):
         return f"{self.user.username} - {self.restaurant_name} - {self.rating}"
 
 
-# 🔹 Gurme başvurusu modeli
 class Application(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    application_text = models.TextField(verbose_name="Başvuru Metni")
-    created_at = models.DateTimeField(auto_now_add=True)
+    message = models.TextField()
     status = models.CharField(max_length=20, choices=[
         ('pending', 'Beklemede'),
         ('approved', 'Onaylandı'),
-        ('rejected', 'Reddedildi')
+        ('rejected', 'Reddedildi'),
     ], default='pending')
 
     def __str__(self):
-        return f"{self.user.username} başvurdu ({self.status})"
+        return f"{self.user.username} - {self.status}"
+

@@ -1,10 +1,29 @@
 {% extends "base.html" %}
+
 {% block content %}
 <h2>Gurme Başvuruları</h2>
+{% if basvurular %}
+    <ul>
+        {% for basvuru in basvurular %}
+            <li>
+                <strong>{{ basvuru.user.username }}</strong> - {{ basvuru.message }} 
+                (Durum: {{ basvuru.status }})
+            </li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>Henüz başvuru yok.</p>
+{% endif %}
 {% for basvuru in basvurular %}
-  <div>
-    <strong>{{ basvuru.user.username }}</strong><br>
-    <p>{{ basvuru.application_text }}</p>
-  </div>
+    <div class="yorum-karti">
+        <strong>{{ basvuru.user.username }}</strong> - {{ basvuru.message }}
+        <br>Durum: <em>{{ basvuru.status }}</em>
+        <form method="post" action="{% url 'basvuru_durum_degistir' basvuru.id %}">
+            {% csrf_token %}
+            <button name="action" value="approve">Onayla</button>
+            <button name="action" value="reject">Reddet</button>
+        </form>
+    </div>
 {% endfor %}
+
 {% endblock %}

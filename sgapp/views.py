@@ -81,8 +81,7 @@ def yorumlar_view(request):
 def restoranlar_view(request):
     return render(request, 'restoranlar.html')  # restoranlar.html senin sayfa dosyanın ismi olacak
 
-def gurme_basvuru_view(request):
-    return render(request, 'gurme_basvuru.html')
+
 
 from .models import Review  # Model adın buysa
 from django.shortcuts import render
@@ -97,9 +96,12 @@ def yorumlar_view(request):
 
 
 
+from .models import Application
+
 def basvuru_inceleme_view(request):
     basvurular = Application.objects.filter(status='pending')
     return render(request, 'basvuru_inceleme.html', {'basvurular': basvurular})
+
 
 def yorum_inceleme_view(request):
     yorumlar = Review.objects.filter(status='pending')
@@ -128,6 +130,73 @@ def yorum_ekle_view(request):
         return redirect('home')  # veya nereye yönlendirmek istersen
 
     return render(request, 'yorum_ekle.html')
+
+from django.shortcuts import render, redirect
+from .models import Application
+
+def gurme_basvuru_view(request):
+    if request.method == 'POST':
+        message = request.POST.get('aciklama')
+        Application.objects.create(
+            user=request.user,
+            message=message,
+            status='pending'
+        )
+        return redirect('home')  # Yorumdan sonra nereye yönlensin istiyorsan
+
+    return render(request, 'gurme_basvuru.html')
+
+from django.shortcuts import redirect, get_object_or_404
+from .models import Application
+
+def basvuru_durum_degistir_view(request, basvuru_id):
+    basvuru = get_object_or_404(Application, id=basvuru_id)
+
+    if request.method == 'POST':
+        action = request.POST.get('action')
+        if action == 'approve':
+            basvuru.status = 'approved'
+            # Kullanıcıyı gurme yap:
+            basvuru.user.role = 'gurme'
+            basvuru.user.save()
+        elif action == 'reject':
+            basvuru.status = 'rejected'
+        basvuru.save()
+
+    return redirect('basvuru_inceleme')
+
+from django.contrib import messages
+
+def basvuru_durum_degistir_view(request, basvuru_id):
+    basvuru = get_object_or_404(Application, id=basvuru_id)
+
+    if request.method == 'POST':
+        action = request.POST.get('action')
+        if action == 'approve':
+            basvuru.status = 'approved'
+            basvuru.user.role = 'gurme'
+            basvuru.user.save()
+            messages.success(request, f"{basvuru.user.username} adlı kullanıcının başvurusu ONAYLANDI.")
+        elif action == 'reject':
+            basvuru.status = 'rejected'
+            messages.warning(request, f"{basvuru.user.username} adlı kullanıcının başvurusu REDDEDİLDİ.")
+        basvuru.save()
+
+    return redirect('basvuru_inceleme')
+
+from .models import Application
+
+def basvuru_durumu_view(request):
+    basvuru = Application.objects.filter(user=request.user).first()
+    return render(request, 'basvuru_durumum.html', {'basvuru': basvuru})
+
+from django.contrib.auth.decorators import login_required
+from .models import Application
+
+@login_required
+def kullanici_basvurularim(request):
+    my_applications = Application.objects.filter(user=request.user)
+    return render(request, 'kullanici_basvurularim.html', {'applications': my_applications})
 
 
 

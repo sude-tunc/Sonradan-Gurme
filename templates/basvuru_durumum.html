@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="welcome-container">
+    <h2>Başvuru Durumunuz</h2>
+    {% if basvuru %}
+        <p>Durum: <strong>{{ basvuru.status }}</strong></p>
+        <p>Mesajınız: {{ basvuru.message }}</p>
+    {% else %}
+        <p>Henüz bir başvuruda bulunmadınız.</p>
+    {% endif %}
+</div>
+{% endblock %}

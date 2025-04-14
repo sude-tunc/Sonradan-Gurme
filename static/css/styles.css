@@ -492,4 +492,34 @@ body {
 .basvuru-form-container button:hover {
     background-color: #2c5282;
 }
+.login-form button {
+    display: block;
+    margin: 20px auto; /* otomatik margin ile yatayda ortalar */
+    padding: 10px 20px;
+    background-color: #2e7d32;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+}
 
+.login-form button:hover {
+    background-color: #1b5e20;
+}
+
+.btn {
+    background-color: #2e7d32;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 25px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+    display: inline-block;
+    margin-top: 20px;
+}
+
+.btn:hover {
+    background-color: #1b5e20;
+}

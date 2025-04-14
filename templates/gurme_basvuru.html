@@ -5,10 +5,8 @@
     <h2>🥂 Gurme Başvuru Formu</h2>
     <form method="post">
         {% csrf_token %}
-
-        <label for="neden">Neden gurme olmak istiyorsun?</label>
-        <textarea name="aciklama" placeholder="Kendini tanıt, gastronomiye olan ilgin nedir?" rows="6" required></textarea>
-
+        <label for="aciklama">Neden gurme olmak istiyorsun?</label>
+        <textarea name="aciklama" placeholder="Gastronomiye ilgin, deneyimlerin, tarzın..." rows="6" required></textarea>
         <button type="submit">Başvur</button>
     </form>
 </div>

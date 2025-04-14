@@ -22,6 +22,10 @@ urlpatterns = [
     path('basvuru-inceleme/', views.basvuru_inceleme_view, name='basvuru_inceleme'),
     path('restoranlar/', views.restoranlar_view, name='restoranlar'),
     path('yorum-ekle/', views.yorum_ekle_view, name='yorum_ekle'),
+    path('basvuru-degisitir/<int:basvuru_id>/', views.basvuru_durum_degistir_view, name='basvuru_durum_degistir'),
+    path('basvuru-durumum/', views.basvuru_durumu_view, name='basvuru_durumu'),
+    path('basvurularim/', views.kullanici_basvurularim, name='kullanici-basvurularim'),
+
 
 
 
