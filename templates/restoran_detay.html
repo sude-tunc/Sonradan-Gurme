@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+
+{% block content %}
+<style>
+    .restoran-detay-container {
+        max-width: 600px;
+        margin: 120px auto 50px;
+        background: linear-gradient(to right, #c8e6c9, #a5d6a7);
+        padding: 30px;
+        border-radius: 20px;
+        box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+        text-align: center;
+        font-family: 'Poppins', sans-serif;
+    }
+
+    .restoran-detay-container h2 {
+        color: #2e7d32;
+        margin-bottom: 20px;
+        font-size: 30px;
+    }
+
+    .restoran-detay-container p {
+        color: #1b5e20;
+        font-size: 18px;
+        margin: 10px 0;
+    }
+
+    .geri-don-link {
+        display: inline-block;
+        margin-top: 20px;
+        padding: 10px 20px;
+        background-color: #2e7d32;
+        color: white;
+        text-decoration: none;
+        border-radius: 20px;
+        font-weight: bold;
+        transition: background-color 0.3s ease;
+    }
+
+    .geri-don-link:hover {
+        background-color: #1b5e20;
+    }
+
+    .harita {
+        margin-top: 25px;
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+</style>
+
+<div class="restoran-detay-container">
+    <h2>{{ restoran.name }}</h2>
+    <p><strong>Adres:</strong> {{ restoran.address }}</p>
+    <p><strong>Koordinatlar:</strong> {{ restoran.latitude }}, {{ restoran.longitude }}</p>
+
+    <!-- Google Maps iframe -->
+    <div class="harita">
+        <iframe
+          width="100%"
+          height="300"
+          style="border:0;"
+          loading="lazy"
+          allowfullscreen
+          referrerpolicy="no-referrer-when-downgrade"
+          src="https://www.google.com/maps?q={{ restoran.latitude }},{{ restoran.longitude }}&output=embed">
+        </iframe>
+    </div>
+
+    <a href="{% url 'kesfet' %}" class="geri-don-link">← Keşfet Sayfasına Geri Dön</a>
+</div>
+{% endblock %}

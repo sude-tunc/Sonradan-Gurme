@@ -225,3 +225,15 @@ def update_profile_view(request):
         form = ProfileUpdateForm(instance=user)
     
     return render(request, 'users/update_profile.html', {'form': form})
+
+from sgapp.models import Restaurant
+
+def kesfet_view(request):
+    restoranlar = Restaurant.objects.all()
+    return render(request, 'kesfet.html', {'restoranlar': restoranlar})
+
+from django.shortcuts import get_object_or_404
+
+def restoran_detay_view(request, restoran_id):
+    restoran = get_object_or_404(Restaurant, id=restoran_id)
+    return render(request, 'restoran_detay.html', {'restoran': restoran})

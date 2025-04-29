@@ -21,6 +21,14 @@
 
         <div class="buttons">
             {% if user.is_authenticated %}
+                {% if user.role == "moderator" %}
+                    <a href="{% url 'moderator_panel' %}" class="btn">Panelim</a>
+                {% elif user.role == "gurme" %}
+                    <a href="{% url 'gurme_dashboard' %}" class="btn">Panelim</a>
+                {% else %}
+                    <a href="{% url 'home' %}" class="btn">Panelim</a>
+                {% endif %}
+                
                 <a href="{% url 'profile' %}" class="btn">Profil</a>
                 <form method="POST" action="{% url 'logout' %}" style="display:inline;">
                     {% csrf_token %}
