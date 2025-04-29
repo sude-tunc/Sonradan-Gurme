@@ -159,3 +159,7 @@ EMAIL_HOST_PASSWORD = 'tvup powx ayde anwp' #güvenlik açığı yaratıyor bunu
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 
 AUTH_USER_MODEL = 'sgapp.User'
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'
+

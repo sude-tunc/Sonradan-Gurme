@@ -39,9 +39,8 @@ from .models import User
 class ProfileUpdateForm(forms.ModelForm):
     class Meta:
         model = User
-        fields = ['bio', 'favorite_dish']
+        fields = ['bio', 'favorite_dish', 'profile_picture']  # 👈 BURAYA EKLİYORUZ
         widgets = {
             'bio': forms.Textarea(attrs={'rows': 4, 'placeholder': 'Kendini anlat...'}),
             'favorite_dish': forms.TextInput(attrs={'placeholder': 'En sevdiğin yemek'}),
         }
-
