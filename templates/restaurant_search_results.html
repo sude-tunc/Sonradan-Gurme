@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+
+{% block content %}
+<style>
+    .search-results {
+        max-width: 900px;
+        margin: 3rem auto;
+        padding: 2rem;
+        background-color: #ffffff;
+        border-radius: 16px;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+        font-family: 'Segoe UI', sans-serif;
+    }
+
+    .search-results h2 {
+        font-size: 2rem;
+        color: #2e7d32;
+        margin-bottom: 1.5rem;
+        text-align: center;
+    }
+
+    .search-results ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .search-results li {
+        background: #f8f8f8;
+        margin-bottom: 1rem;
+        padding: 1.2rem 1.5rem;
+        border-radius: 12px;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    }
+
+    .search-results li:hover {
+        background-color: #e8f5e9;
+        transform: translateY(-3px);
+    }
+
+    .search-results a {
+        text-decoration: none;
+        font-size: 1.2rem;
+        color: #333;
+        font-weight: 500;
+        display: block;
+    }
+
+    .search-results a:hover {
+        color: #2e7d32;
+    }
+
+    .search-results .no-result {
+        text-align: center;
+        color: #888;
+        font-style: italic;
+    }
+</style>
+
+<div class="search-results">
+    <h2>Arama Sonuçları: "{{ query }}"</h2>
+    <ul>
+        {% for restaurant in results %}
+            <li>
+                <a href="{% url 'restoran_detay' restaurant.id %}">{{ restaurant.name }}</a>
+            </li>
+        {% empty %}
+            <li class="no-result">Sonuç bulunamadı.</li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}

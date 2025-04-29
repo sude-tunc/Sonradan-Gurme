@@ -16,7 +16,10 @@
         </a>
 
         <div class="search-box">
-            <input type="text" placeholder="ne yemek istersin?">
+            <form action="{% url 'restaurant_search' %}" method="GET" style="display: flex;">
+                <input type="text" name="q" placeholder="Ne yemek istersin?" required style="flex: 1; padding: 0.5rem;">
+                <button type="submit" style="padding: 0.5rem; background-color: #4CAF50; color: white; border: none; cursor: pointer;">Ara</button>
+            </form>
         </div>
 
         <div class="buttons">

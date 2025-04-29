@@ -237,3 +237,20 @@ from django.shortcuts import get_object_or_404
 def restoran_detay_view(request, restoran_id):
     restoran = get_object_or_404(Restaurant, id=restoran_id)
     return render(request, 'restoran_detay.html', {'restoran': restoran})
+
+from django.shortcuts import render
+from .models import Restaurant
+
+def restaurant_search(request):
+    query = request.GET.get('q')
+    results = []
+    if query:
+        results = Restaurant.objects.filter(name__icontains=query)
+    return render(request, 'restaurant_search_results.html', {'results': results, 'query': query})
+
+from django.shortcuts import render, get_object_or_404
+from .models import Restaurant
+
+def restaurant_detail(request, pk):
+    restaurant = get_object_or_404(Restaurant, pk=pk)
+    return render(request, 'restaurant_detail.html', {'restaurant': restaurant})

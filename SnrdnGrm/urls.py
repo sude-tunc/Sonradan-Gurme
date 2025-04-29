@@ -25,6 +25,8 @@ urlpatterns = [
     path('reset/done/', auth_views.PasswordResetCompleteView.as_view(), name='password_reset_complete'),
     path('kesfet/', views.kesfet_view, name='kesfet'),
     path('restoran/<int:restoran_id>/', views.restoran_detay_view, name='restoran_detay'),
+    path('restoranlar/', views.restaurant_search, name='restaurant_search'),
+
 ]
 
 # 🌟 MEDIA dosyalarını ekle (resimler vs çalışsın diye!)

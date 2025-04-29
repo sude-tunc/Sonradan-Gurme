@@ -28,6 +28,8 @@ urlpatterns = [
     path('basvurularim/', views.kullanici_basvurularim, name='kullanici-basvurularim'),
     path('logout/', LogoutView.as_view(next_page='login'), name='logout'),
     path('profil/guncelle/', views.update_profile_view, name='update_profile'),
+    path('restoran/<int:pk>/', views.restaurant_detail, name='restaurant_detail'),
+
 
 
 
