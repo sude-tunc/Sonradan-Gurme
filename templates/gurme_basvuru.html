@@ -2,12 +2,14 @@
 
 {% block content %}
 <div class="basvuru-form-container">
-    <h2>🥂 Gurme Başvuru Formu</h2>
+    <h2>👨‍🍳 Gurme Başvuru Formu</h2>
     <form method="post">
         {% csrf_token %}
-        <label for="aciklama">Neden gurme olmak istiyorsun?</label>
-        <textarea name="aciklama" placeholder="Gastronomiye ilgin, deneyimlerin, tarzın..." rows="6" required></textarea>
-        <button type="submit">Başvur</button>
+        
+        <label for="message">Neden gurme olmak istiyorsun?</label>
+        <textarea id="message" name="message" placeholder="Gastronomiye ilgin, deneyimlerin, tarzın hakkında yaz..." rows="6" required></textarea>
+
+        <button type="submit" class="submit-button">Başvur</button>
     </form>
 </div>
 {% endblock %}

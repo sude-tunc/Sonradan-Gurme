@@ -307,3 +307,232 @@ a.btn-outline:hover, button.btn-outline:hover {
     text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.1);
     animation: fadeInDown 0.6s ease-in-out;
 }
+
+.yorum-formu-container {
+    max-width: 500px;
+    margin: 100px auto 50px auto;
+    background-color: #f0fdf4;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0px 6px 20px rgba(0,0,0,0.1);
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.yorum-formu-container h2 {
+    margin-bottom: 20px;
+    color: #2e7d32;
+}
+
+.yorum-formu-container form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.yorum-formu-container label {
+    margin-top: 10px;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #333;
+}
+
+.yorum-formu-container input[type="text"],
+.yorum-formu-container select,
+.yorum-formu-container textarea {
+    width: 100%;
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    margin-bottom: 15px;
+}
+
+.yorum-formu-container button {
+    margin-top: 20px;
+    background-color: #2e7d32;
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 10px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.yorum-formu-container button:hover {
+    background-color: #1b5e20;
+}
+.basvuru-form-container {
+    max-width: 600px;
+    margin: 100px auto 50px auto;
+    background-color: #f0fdf4;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0px 6px 20px rgba(0,0,0,0.1);
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.basvuru-form-container h2 {
+    margin-bottom: 20px;
+    color: #2e7d32;
+}
+
+.basvuru-form-container form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+}
+
+.basvuru-form-container label {
+    margin-top: 10px;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #333;
+    text-align: left;
+}
+
+.basvuru-form-container textarea {
+    width: 100%;
+    padding: 12px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    margin-bottom: 20px;
+    resize: vertical;
+    font-size: 15px;
+}
+
+.submit-button {
+    background-color: #2e7d32;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 10px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.submit-button:hover {
+    background-color: #1b5e20;
+}
+.basvuru-container {
+    max-width: 800px;
+    margin: 100px auto 50px;
+    padding: 20px;
+    text-align: center;
+}
+
+.basvuru-container h2 {
+    margin-bottom: 30px;
+    color: #2e7d32;
+}
+
+.basvuru-karti {
+    background-color: #f0fdf4;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.basvuru-karti p {
+    margin: 10px 0;
+    color: #333;
+}
+
+.butonlar {
+    display: flex;
+    justify-content: flex-start;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.onayla-button, .reddet-button {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.onayla-button {
+    background-color: #2e7d32;
+    color: white;
+}
+
+.onayla-button:hover {
+    background-color: #1b5e20;
+}
+
+.reddet-button {
+    background-color: #c62828;
+    color: white;
+}
+
+.reddet-button:hover {
+    background-color: #b71c1c;
+}
+
+.status-pending {
+    color: #ff9800;
+    font-weight: bold;
+}
+
+.status-approved {
+    color: #2e7d32;
+    font-weight: bold;
+}
+
+.status-rejected {
+    color: #c62828;
+    font-weight: bold;
+}
+.yorum-inceleme-container {
+    max-width: 800px;
+    margin: 100px auto 50px;
+    padding: 20px;
+    text-align: center;
+}
+
+.yorum-karti {
+    background-color: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    padding: 20px;
+    margin-bottom: 25px;
+    text-align: left;
+}
+
+.yorum-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #2e7d32;
+}
+
+.yorum-tarih {
+    font-size: 13px;
+    color: #666;
+}
+
+.yorum-puan {
+    font-size: 18px;
+    color: #fbc02d;
+    margin-bottom: 10px;
+}
+
+.yorum-metin {
+    color: #333;
+    margin-bottom: 15px;
+}

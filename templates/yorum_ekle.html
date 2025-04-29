@@ -6,18 +6,18 @@
     <form method="post">
         {% csrf_token %}
         
-        <label for="restaurant">Restoran Adı:</label>
-        <input type="text" name="restaurant_name" placeholder="Restoran ismini gir..." required>
+        <label for="restaurant_name">Restoran Adı:</label>
+        <input type="text" id="restaurant_name" name="restaurant_name" placeholder="Restoran ismini gir..." required>
 
         <label for="rating">Puan:</label>
-        <select name="rating">
+        <select id="rating" name="rating" required>
             {% for i in "12345" %}
             <option value="{{ i }}">{{ i }}</option>
             {% endfor %}
         </select>
 
         <label for="comment">Yorum:</label>
-        <textarea name="comment" placeholder="Deneyimini yaz..." rows="5" required></textarea>
+        <textarea id="comment" name="comment" placeholder="Deneyimini yaz..." rows="5" required></textarea>
 
         <button type="submit">Gönder</button>
     </form>

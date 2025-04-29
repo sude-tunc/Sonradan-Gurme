@@ -1,29 +1,24 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h2>Gurme Başvuruları</h2>
-{% if basvurular %}
-    <ul>
-        {% for basvuru in basvurular %}
-            <li>
-                <strong>{{ basvuru.user.username }}</strong> - {{ basvuru.message }} 
-                (Durum: {{ basvuru.status }})
-            </li>
-        {% endfor %}
-    </ul>
-{% else %}
-    <p>Henüz başvuru yok.</p>
-{% endif %}
-{% for basvuru in basvurular %}
-    <div class="yorum-karti">
-        <strong>{{ basvuru.user.username }}</strong> - {{ basvuru.message }}
-        <br>Durum: <em>{{ basvuru.status }}</em>
-        <form method="post" action="{% url 'basvuru_durum_degistir' basvuru.id %}">
-            {% csrf_token %}
-            <button name="action" value="approve">Onayla</button>
-            <button name="action" value="reject">Reddet</button>
-        </form>
-    </div>
-{% endfor %}
+<div class="basvuru-container">
+    <h2>📝 Gurme Başvuruları</h2>
 
+    {% if basvurular %}
+        {% for basvuru in basvurular %}
+            <div class="basvuru-karti">
+                <p><strong>{{ basvuru.user.username }}</strong> - "{{ basvuru.message }}"</p>
+                <p>Durum: <span class="status-{{ basvuru.status }}">{{ basvuru.get_status_display }}</span></p>
+
+                <form method="post" action="{% url 'basvuru_durum_degistir' basvuru.id %}" class="butonlar">
+                    {% csrf_token %}
+                    <button type="submit" name="action" value="approve" class="onayla-button">Onayla</button>
+                    <button type="submit" name="action" value="reject" class="reddet-button">Reddet</button>
+                </form>
+            </div>
+        {% endfor %}
+    {% else %}
+        <p>Henüz başvuru yok.</p>
+    {% endif %}
+</div>
 {% endblock %}

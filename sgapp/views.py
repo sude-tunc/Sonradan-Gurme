@@ -134,17 +134,28 @@ def yorum_ekle_view(request):
 from django.shortcuts import render, redirect
 from .models import Application
 
+from .models import Application
+from django.shortcuts import render, redirect
+from django.contrib.auth.decorators import login_required
+
+@login_required
 def gurme_basvuru_view(request):
     if request.method == 'POST':
-        message = request.POST.get('aciklama')
-        Application.objects.create(
-            user=request.user,
-            message=message,
-            status='pending'
-        )
-        return redirect('home')  # Yorumdan sonra nereye yönlensin istiyorsan
+        message = request.POST.get('message')
 
+        if message:
+            Application.objects.create(
+                user=request.user,
+                message=message,
+                status='pending'
+            )
+            return redirect('home')  # Başarılı olunca anasayfaya yönlendiriyorsun
+        else:
+            # Eğer message boşsa istersen bir hata verebilirsin
+            return render(request, 'gurme_basvuru.html', {'error': 'Mesaj boş bırakılamaz!'})
+    
     return render(request, 'gurme_basvuru.html')
+
 
 from django.shortcuts import redirect, get_object_or_404
 from .models import Application

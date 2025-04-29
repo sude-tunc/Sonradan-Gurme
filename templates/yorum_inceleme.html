@@ -1,17 +1,29 @@
 {% extends "base.html" %}
-{% block content %}
-<h2>Bekleyen Yorumlar</h2>
 
-{% if yorumlar %}
-    {% for yorum in yorumlar %}
-        <div class="yorum-karti">
-            <strong>{{ yorum.user.username }}</strong><br>
-            <span>{{ yorum.created_at|date:"d.m.Y H:i" }}</span><br>
-            ⭐ {{ yorum.rating }}/5<br>
-            <p>{{ yorum.comment }}</p>
-        </div>
-    {% endfor %}
-{% else %}
-    <p>Bekleyen yorum bulunamadı.</p>
-{% endif %}
+{% block content %}
+<div class="yorum-inceleme-container">
+    <h2>📋 Bekleyen Yorumlar</h2>
+
+    {% if yorumlar %}
+        {% for yorum in yorumlar %}
+            <div class="yorum-karti">
+                <div class="yorum-header">
+                    <strong>{{ yorum.user.username }}</strong>
+                    <span class="yorum-tarih">{{ yorum.created_at|date:"d.m.Y H:i" }}</span>
+                </div>
+
+                <div class="yorum-puan">
+                    {% for i in "12345"|slice:":yorum.rating"|make_list %}
+                        ⭐
+                    {% endfor %}
+                    <span>{{ yorum.rating }}/5</span>
+                </div>
+
+                <p class="yorum-metin">{{ yorum.comment }}</p>
+            </div>
+        {% endfor %}
+    {% else %}
+        <p>Bekleyen yorum bulunamadı.</p>
+    {% endif %}
+</div>
 {% endblock %}
