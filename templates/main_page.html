@@ -1,8 +1,113 @@
 {% extends "base.html" %}
 
 {% block content %}
+<style>
+    .hero-block {
+        padding: 3rem 2rem;
+        text-align: center;
+    }
+
+    .hero-block h1 {
+        font-size: 2.8rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .hero-block p.subheading {
+        font-size: 1.2rem;
+        color: #444;
+        margin-bottom: 2.5rem;
+    }
+
+    .feature-cards {
+        display: flex;
+        justify-content: space-between;
+        gap: 2rem;
+        width: 100%;
+        max-width: 1200px;
+        margin: 0 auto 2rem auto;
+        flex-wrap: wrap;
+    }
+
+    .feature-card {
+        background: #f8f8f8;
+        border-radius: 16px;
+        padding: 2rem;
+        flex: 1;
+        min-width: 280px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .feature-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    .feature-card h3 {
+        font-size: 1.4rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .cta-button {
+        display: inline-block;
+        margin-top: 2rem;
+        padding: 0.9rem 2.2rem;
+        font-size: 1.1rem;
+        font-weight: 600;
+        background: linear-gradient(135deg, #4CAF50, #43A047);
+        color: #fff !important;
+        text-decoration: none !important;
+        border: none;
+        border-radius: 50px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        transition: all 0.3s ease-in-out;
+        cursor: pointer;
+    }
+
+    .cta-button:hover {
+        background: linear-gradient(135deg, #45A049, #388E3C);
+        box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+        transform: scale(1.05);
+    }
+
+    .sub-link {
+        margin-top: 1rem;
+    }
+
+    .sub-link a {
+        color: #5e35b1;
+        font-weight: 500;
+        text-decoration: none;
+        transition: color 0.3s;
+    }
+
+    .sub-link a:hover {
+        color: #311b92;
+    }
+
+</style>
+
 <div class="hero-block">
     <h1>Sonradan Gurme'ye Hoşgeldiniz!</h1>
-    <p>Yeni yemekler keşfetmeye hazır mısın?</p>
+    <p class="subheading">Türkiye'nin dört bir yanındaki en özel restoranları keşfetmeye hazır mısın?</p>
+
+    <div class="feature-cards">
+        <div class="feature-card">
+            <h3>🍽️ Gurme Onaylı Yorumlar</h3>
+            <p>Gerçek gurmelerin onayladığı restoran ve yemek yorumları ile güvenle seçim yap.</p>
+        </div>
+        <div class="feature-card">
+            <h3>🗺️ Harita Üzerinde Keşfet</h3>
+            <p>En iyi restoranları lokasyon bazlı keşfet, hemen yol tarifini al.</p>
+        </div>
+        <div class="feature-card">
+            <h3>🌟 Kendi Lezzet Rehberini Oluştur</h3>
+            <p>Favori restoranlarını listele, gurme olma yolunda adım at.</p>
+        </div>
+    </div>
+
+    <a class="cta-button" href="{% url 'register' %}">🚀 Hemen Katıl</a>
+
+    <p class="sub-link"><a href="{% url 'kesfet' %}">Popüler Restoranları Gör 👀</a></p>
 </div>
 {% endblock %}
