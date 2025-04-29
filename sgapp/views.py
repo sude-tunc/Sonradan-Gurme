@@ -114,22 +114,34 @@ def yorum_ekle_view(request):
 from django.shortcuts import render, redirect
 from .models import Review
 
+from .models import Review, Restaurant
+
+@login_required
 def yorum_ekle_view(request):
     if request.method == 'POST':
-        restoran = request.POST.get('restaurant_name')
+        restaurant_id = request.POST.get('restaurant')
         rating = request.POST.get('rating')
         comment = request.POST.get('comment')
 
+        restoran = Restaurant.objects.get(id=restaurant_id)
+
         Review.objects.create(
             user=request.user,
-            restaurant_name=restoran,
+            restaurant_name=restoran.name,  # sadece adı string olarak kaydediyoruz
             rating=rating,
             comment=comment,
             status='pending'
         )
-        return redirect('gurme_dashboard')  
+        return redirect('gurme_dashboard')
 
-    return render(request, 'yorum_ekle.html')
+    restoranlar = Restaurant.objects.all()
+    return render(request, 'yorum_ekle.html', {'restaurants': restoranlar})
+
+
+    # GET isteği ise restoranları listele
+    restoranlar = Restaurant.objects.all()
+    return render(request, 'gurme_dashboard',{'restoranlar': restoranlar})  # burada gurme_dashboard sayfasını kullanıyoruz
+
 
 from django.shortcuts import render, redirect
 from .models import Application
@@ -234,9 +246,20 @@ def kesfet_view(request):
 
 from django.shortcuts import get_object_or_404
 
+from .models import Restaurant, Review
+from django.shortcuts import render, get_object_or_404
+
 def restoran_detay_view(request, restoran_id):
     restoran = get_object_or_404(Restaurant, id=restoran_id)
-    return render(request, 'restoran_detay.html', {'restoran': restoran})
+
+    # Bu restorana ait yorumları filtrele
+    yorumlar = Review.objects.filter(restaurant_name=restoran.name, status='approved')
+
+    return render(request, 'restoran_detay.html', {
+        'restoran': restoran,
+        'yorumlar': yorumlar
+    })
+
 
 from django.shortcuts import render
 from .models import Restaurant

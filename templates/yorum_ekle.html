@@ -5,9 +5,15 @@
     <h2>🍽️ Yorum Ekle</h2>
     <form method="post">
         {% csrf_token %}
+
+        <label for="restaurant">Restoran Seç:</label>
+        <select id="restaurant" name="restaurant" required>
+            <option value="">Restoran seçiniz...</option>
+            {% for restaurant in restaurants %}
+            <option value="{{ restaurant.id }}">{{ restaurant.name }}</option>
+            {% endfor %}
+        </select>
         
-        <label for="restaurant_name">Restoran Adı:</label>
-        <input type="text" id="restaurant_name" name="restaurant_name" placeholder="Restoran ismini gir..." required>
 
         <label for="rating">Puan:</label>
         <select id="rating" name="rating" required>
@@ -22,4 +28,19 @@
         <button type="submit">Gönder</button>
     </form>
 </div>
+
+<!-- Aramalı dropdown için Select2 kütüphanesi -->
+<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
+<script>
+    // Sayfa yüklenince restaurant select'ine select2 uygula
+    $(document).ready(function() {
+        $('#restaurant').select2({
+            placeholder: "Restoran seç...",
+            allowClear: true
+        });
+    });
+</script>
+
 {% endblock %}
