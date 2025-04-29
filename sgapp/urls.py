@@ -10,6 +10,7 @@ from .views import (
     gurme_dashboard,
     home_view
 )
+from django.shortcuts import render
 
 urlpatterns = [
     path('', index, name='index'),  # Açılış sayfası
@@ -42,11 +43,6 @@ urlpatterns = [
     path('home/', home_view, name='home'),  # Normal kullanıcı paneli
 ]
 
-def yorumlar_view(request):
-    return render(request, 'yorumlar.html')
 
-def restoranlar_view(request):
-    return render(request, 'restoranlar.html')
 
-def gurme_basvuru_view(request):
-    return render(request, 'gurme_basvuru.html')
+

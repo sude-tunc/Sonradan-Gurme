@@ -127,7 +127,7 @@ def yorum_ekle_view(request):
             comment=comment,
             status='pending'
         )
-        return redirect('home')  # veya nereye yönlendirmek istersen
+        return redirect('gurme_dashboard')  
 
     return render(request, 'yorum_ekle.html')
 
