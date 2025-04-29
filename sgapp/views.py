@@ -258,6 +258,7 @@ def restoran_detay_view(request, restoran_id):
     return render(request, 'restoran_detay.html', {
         'restoran': restoran,
         'yorumlar': yorumlar
+        
     })
 
 
