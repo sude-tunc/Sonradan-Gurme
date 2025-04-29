@@ -9,3 +9,9 @@ from .models import Review, User, Application
 
 
 admin.site.register(Application)
+# sgapp/admin.py
+
+from django.contrib import admin
+from .models import Restaurant
+
+admin.site.register(Restaurant)

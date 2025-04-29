@@ -49,3 +49,15 @@ class Application(models.Model):
     def __str__(self):
         return f"{self.user.username} - {self.status}"
 
+# sgapp/models.py
+from django.db import models
+
+class Restaurant(models.Model):
+    name = models.CharField(max_length=200)
+    address = models.TextField(blank=True, null=True)
+    latitude = models.FloatField()
+    longitude = models.FloatField()
+
+    def __str__(self):
+        return self.name
+
