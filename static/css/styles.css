@@ -12,7 +12,7 @@ body {
 
 /* Navbar */
 .navbar {
-    background: linear-gradient(to right, #2e7d32, #66bb6a);
+    background: linear-gradient(to right, #266129, #77bb66);
     color: white;
     display: flex;
     justify-content: space-between;
