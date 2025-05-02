@@ -16,7 +16,7 @@ urlpatterns = [
     path('', index, name='index'),  # Açılış sayfası
     path('register/', register, name='register'),  # Kayıt
     path('login/', LoginView.as_view(template_name='users/login.html'), name='login'),
-    path('yorumlar/', views.yorumlar_view, name='yorumlar'),  # 💥 Burası önemli!
+    path('yorumlar/', views.yorumlar_view, name='yorumlar'),  
     path('restoranlar/', views.restoranlar_view, name='restoranlar'),  # bu satır önemli
     path('gurme-basvuru/', views.gurme_basvuru_view, name='gurme_basvuru'),
     path('home/', views.home_view, name='home'),

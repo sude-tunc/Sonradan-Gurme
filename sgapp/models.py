@@ -1,7 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 
-# 🔹 Özel kullanıcı modelin
+#  Özel kullanıcı modeli
 class User(AbstractUser):
     ROLE_CHOICES = (
         ('normal', 'Normal Kullanıcı'),
@@ -18,7 +18,7 @@ class User(AbstractUser):
         return self.username
 
 
-# 🔹 Yorum modeli
+#  Yorum modeli
 class Review(models.Model):
     RATING_CHOICES = [(i, str(i)) for i in range(1, 6)]
 

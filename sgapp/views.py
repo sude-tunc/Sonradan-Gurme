@@ -79,11 +79,11 @@ def yorumlar_view(request):
     return render(request, 'yorumlar.html')
 
 def restoranlar_view(request):
-    return render(request, 'restoranlar.html')  # restoranlar.html senin sayfa dosyanın ismi olacak
+    return render(request, 'restoranlar.html')  
 
 
 
-from .models import Review  # Model adın buysa
+from .models import Review  
 from django.shortcuts import render
 
 
@@ -161,9 +161,9 @@ def gurme_basvuru_view(request):
                 message=message,
                 status='pending'
             )
-            return redirect('home')  # Başarılı olunca anasayfaya yönlendiriyorsun
+            return redirect('home')  # Başarılı olunca anasayfaya yönlendirio
         else:
-            # Eğer message boşsa istersen bir hata verebilirsin
+            # hata msj ı
             return render(request, 'gurme_basvuru.html', {'error': 'Mesaj boş bırakılamaz!'})
     
     return render(request, 'gurme_basvuru.html')
@@ -229,7 +229,7 @@ from .forms import ProfileUpdateForm
 def update_profile_view(request):
     user = request.user
     if request.method == 'POST':
-        form = ProfileUpdateForm(request.POST, request.FILES, instance=user)  # 👈 BURADA request.FILES EKLEDİK
+        form = ProfileUpdateForm(request.POST, request.FILES, instance=user)  
         if form.is_valid():
             form.save()
             return redirect('profile')
