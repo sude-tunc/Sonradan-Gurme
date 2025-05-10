@@ -47,6 +47,29 @@
         overflow: hidden;
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     }
+
+    .restoran-yorumlar {
+        margin-top: 40px;
+        text-align: left;
+    }
+
+    .restoran-yorumlar h3 {
+        font-size: 24px;
+        color: #1b5e20;
+    }
+
+    .yorum-karti {
+        background-color: #e8f5e9;
+        padding: 15px;
+        border-radius: 10px;
+        margin: 15px 0;
+    }
+
+    .yorum-karti img {
+        max-width: 100%;
+        margin-top: 10px;
+        border-radius: 10px;
+    }
 </style>
 
 <div class="restoran-detay-container">
@@ -65,6 +88,29 @@
           referrerpolicy="no-referrer-when-downgrade"
           src="https://www.google.com/maps?q={{ restoran.latitude }},{{ restoran.longitude }}&output=embed">
         </iframe>
+    </div>
+
+    <!-- Yorumlar -->
+    <div class="restoran-yorumlar">
+        <h3>Yorumlar</h3>
+        {% if yorumlar %}
+            {% for yorum in yorumlar %}
+                <div class="yorum-karti">
+                    <p><strong>{{ yorum.user.username }}</strong> - {{ yorum.rating }} ⭐</p>
+                    <p>{{ yorum.comment }}</p>
+
+                    {% if yorum.image %}
+                        <img src="{{ yorum.image.url }}" alt="Yemek Fotoğrafı">
+                    {% endif %}
+
+                    {% if yorum.receipt %}
+                        <p style="font-size: 12px; margin-top: 10px;"><em>Fiş/Fatura eklendi</em></p>
+                    {% endif %}
+                </div>
+            {% endfor %}
+        {% else %}
+            <p style="margin-top: 20px;">Henüz onaylanmış yorum bulunmamaktadır.</p>
+        {% endif %}
     </div>
 
     <a href="{% url 'kesfet' %}" class="geri-don-link">← Keşfet Sayfasına Geri Dön</a>

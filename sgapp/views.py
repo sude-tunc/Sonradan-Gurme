@@ -116,6 +116,10 @@ from .models import Review
 
 from .models import Review, Restaurant
 
+from sgapp.models import Review, Restaurant
+from django.contrib.auth.decorators import login_required
+from django.shortcuts import redirect
+
 @login_required
 def yorum_ekle_view(request):
     if request.method == 'POST':
@@ -127,12 +131,13 @@ def yorum_ekle_view(request):
 
         Review.objects.create(
             user=request.user,
-            restaurant_name=restoran.name,  # sadece adı string olarak kaydediyoruz
+            restaurant=restoran,  # ✅ artık ForeignKey kullanıyoruz
             rating=rating,
             comment=comment,
             status='pending'
         )
         return redirect('gurme_dashboard')
+
 
     restoranlar = Restaurant.objects.all()
     return render(request, 'yorum_ekle.html', {'restaurants': restoranlar})
@@ -246,20 +251,22 @@ def kesfet_view(request):
 
 from django.shortcuts import get_object_or_404
 
-from .models import Restaurant, Review
+
+
 from django.shortcuts import render, get_object_or_404
+from .models import Restaurant, Review
 
 def restoran_detay_view(request, restoran_id):
     restoran = get_object_or_404(Restaurant, id=restoran_id)
 
-    # Bu restorana ait yorumları filtrele
-    yorumlar = Review.objects.filter(restaurant_name=restoran.name, status='approved')
+    # Bu restorana ait onaylanmış yorumları getir
+    yorumlar = Review.objects.filter(restaurant=restoran, status='approved')
 
     return render(request, 'restoran_detay.html', {
         'restoran': restoran,
         'yorumlar': yorumlar
-        
     })
+
 
 
 from django.shortcuts import render
