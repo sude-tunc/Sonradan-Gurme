@@ -30,6 +30,10 @@ urlpatterns = [
     path('logout/', LogoutView.as_view(next_page='login'), name='logout'),
     path('profil/guncelle/', views.update_profile_view, name='update_profile'),
     path('restoran/<int:pk>/', views.restaurant_detail, name='restaurant_detail'),
+    path('moderator/yorumlar/', views.yorum_inceleme_view, name='yorum_inceleme'),
+    path('moderator/yorum/<int:yorum_id>/onayla/', views.yorum_onayla_view, name='yorum_onayla'),
+    path('moderator/yorum/<int:yorum_id>/reddet/', views.yorum_reddet_view, name='yorum_reddet'),
+
 
 
 

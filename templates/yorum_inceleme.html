@@ -1,6 +1,71 @@
 {% extends "base.html" %}
 
 {% block content %}
+<style>
+    .yorum-inceleme-container {
+        max-width: 800px;
+        margin: 40px auto;
+        font-family: 'Segoe UI', sans-serif;
+    }
+
+    .yorum-karti {
+        background: #f9f9f9;
+        padding: 20px;
+        margin-bottom: 20px;
+        border-radius: 12px;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .yorum-header {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 10px;
+        font-weight: bold;
+    }
+
+    .yorum-tarih {
+        color: #666;
+        font-size: 14px;
+    }
+
+    .yorum-puan {
+        color: #ffa500;
+        font-size: 18px;
+        margin-bottom: 8px;
+    }
+
+    .yorum-metin {
+        font-size: 16px;
+        margin-bottom: 15px;
+    }
+
+    .yorum-buttons a {
+        margin-right: 10px;
+        padding: 6px 12px;
+        text-decoration: none;
+        border-radius: 6px;
+        font-size: 14px;
+        color: white;
+        transition: 0.2s ease;
+    }
+
+    .btn-onayla {
+        background-color: #4caf50;
+    }
+
+    .btn-onayla:hover {
+        background-color: #388e3c;
+    }
+
+    .btn-reddet {
+        background-color: #f44336;
+    }
+
+    .btn-reddet:hover {
+        background-color: #d32f2f;
+    }
+</style>
+
 <div class="yorum-inceleme-container">
     <h2>📋 Bekleyen Yorumlar</h2>
 
@@ -8,7 +73,7 @@
         {% for yorum in yorumlar %}
             <div class="yorum-karti">
                 <div class="yorum-header">
-                    <strong>{{ yorum.user.username }}</strong>
+                    <span>{{ yorum.user.username }}</span>
                     <span class="yorum-tarih">{{ yorum.created_at|date:"d.m.Y H:i" }}</span>
                 </div>
 
@@ -20,6 +85,11 @@
                 </div>
 
                 <p class="yorum-metin">{{ yorum.comment }}</p>
+
+                <div class="yorum-buttons">
+                    <a href="{% url 'yorum_onayla' yorum.id %}" class="btn-onayla">✅ Onayla</a>
+                    <a href="{% url 'yorum_reddet' yorum.id %}" class="btn-reddet">❌ Reddet</a>
+                </div>
             </div>
         {% endfor %}
     {% else %}

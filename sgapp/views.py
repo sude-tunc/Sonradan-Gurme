@@ -285,3 +285,27 @@ from .models import Restaurant
 def restaurant_detail(request, pk):
     restaurant = get_object_or_404(Restaurant, pk=pk)
     return render(request, 'restaurant_detail.html', {'restaurant': restaurant})
+
+from django.contrib.auth.decorators import user_passes_test
+
+def moderator_required(view_func):
+    return user_passes_test(lambda u: u.is_authenticated and u.role == 'moderator')(view_func)
+
+@moderator_required
+def yorum_inceleme_view(request):
+    yorumlar = Review.objects.filter(status='pending').order_by('-created_at')
+    return render(request, 'yorum_inceleme.html', {'yorumlar': yorumlar})
+
+@moderator_required
+def yorum_onayla_view(request, yorum_id):
+    yorum = get_object_or_404(Review, id=yorum_id)
+    yorum.status = 'approved'
+    yorum.save()
+    return redirect('yorum_inceleme')
+
+@moderator_required
+def yorum_reddet_view(request, yorum_id):
+    yorum = get_object_or_404(Review, id=yorum_id)
+    yorum.status = 'rejected'
+    yorum.save()
+    return redirect('yorum_inceleme')
