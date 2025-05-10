@@ -1,0 +1,85 @@
+{% extends "base.html" %}
+
+{% block content %}
+<style>
+  .kullanici-tablosu {
+    width: 90%;
+    margin: 40px auto;
+    border-collapse: collapse;
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #f9f9f9;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  .kullanici-tablosu th,
+  .kullanici-tablosu td {
+    padding: 12px 16px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+
+  .kullanici-tablosu th {
+    background-color: #4CAF50;
+    color: white;
+    font-weight: bold;
+  }
+
+  .kullanici-tablosu tr:hover {
+    background-color: #f1f1f1;
+  }
+
+  .sil-btn {
+    background-color: #f44336;
+    color: white;
+    padding: 6px 10px;
+    text-decoration: none;
+    border-radius: 4px;
+    font-size: 14px;
+  }
+
+  .sil-btn:hover {
+    background-color: #c62828;
+  }
+
+  .gray-label {
+    color: gray;
+    font-style: italic;
+  }
+
+  h2 {
+    text-align: center;
+    margin-top: 40px;
+    font-size: 28px;
+    color: #333;
+  }
+</style>
+
+<h2>👥 Kayıtlı Kullanıcılar</h2>
+
+<table class="kullanici-tablosu">
+  <tr>
+    <th>Kullanıcı Adı</th>
+    <th>E-posta</th>
+    <th>Rol</th>
+    <th>Kayıt Tarihi</th>
+    <th>İşlem</th>
+  </tr>
+  {% for user in kullanicilar %}
+  <tr>
+    <td>{{ user.username }}</td>
+    <td>{{ user.email }}</td>
+    <td>{{ user.role }}</td>
+    <td>{{ user.date_joined|date:"d.m.Y H:i" }}</td>
+    <td>
+      {% if user.role != "moderator" %}
+        <a href="{% url 'kullanici_sil' user.id %}" class="sil-btn" onclick="return confirm('Silmek istediğine emin misin?')">🗑️ Sil</a>
+      {% else %}
+        <span class="gray-label">Moderatör</span>
+      {% endif %}
+    </td>
+  </tr>
+  {% endfor %}
+</table>
+{% endblock %}

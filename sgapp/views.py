@@ -120,6 +120,10 @@ from sgapp.models import Review, Restaurant
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import redirect
 
+from django.shortcuts import render, redirect, get_object_or_404
+from django.contrib.auth.decorators import login_required
+from .models import Review, Restaurant
+
 @login_required
 def yorum_ekle_view(request):
     if request.method == 'POST':
@@ -127,25 +131,20 @@ def yorum_ekle_view(request):
         rating = request.POST.get('rating')
         comment = request.POST.get('comment')
 
-        restoran = Restaurant.objects.get(id=restaurant_id)
+        restoran = get_object_or_404(Restaurant, id=restaurant_id)
 
         Review.objects.create(
             user=request.user,
-            restaurant=restoran,  # ✅ artık ForeignKey kullanıyoruz
+            restaurant=restoran,
             rating=rating,
             comment=comment,
             status='pending'
         )
         return redirect('gurme_dashboard')
 
-
+    # GET isteği: restoranları listele
     restoranlar = Restaurant.objects.all()
     return render(request, 'yorum_ekle.html', {'restaurants': restoranlar})
-
-
-    # GET isteği ise restoranları listele
-    restoranlar = Restaurant.objects.all()
-    return render(request, 'gurme_dashboard',{'restoranlar': restoranlar})  # burada gurme_dashboard sayfasını kullanıyoruz
 
 
 from django.shortcuts import render, redirect
@@ -309,3 +308,23 @@ def yorum_reddet_view(request, yorum_id):
     yorum.status = 'rejected'
     yorum.save()
     return redirect('yorum_inceleme')
+
+from django.contrib.auth import get_user_model
+from django.contrib.auth.decorators import user_passes_test
+
+User = get_user_model()
+
+def moderator_required(view_func):
+    return user_passes_test(lambda u: u.is_authenticated and u.role == 'moderator')(view_func)
+
+@moderator_required
+def kullanici_listesi_view(request):
+    kullanicilar = User.objects.all().order_by('-date_joined')
+    return render(request, 'moderator_kullanicilar.html', {'kullanicilar': kullanicilar})
+
+@moderator_required
+def kullanici_sil_view(request, user_id):
+    user = get_object_or_404(User, id=user_id)
+    if user.role != 'moderator':  # kendisi dışındaki herkes silinebilir
+        user.delete()
+    return redirect('kullanici_listesi')

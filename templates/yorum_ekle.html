@@ -7,18 +7,17 @@
         {% csrf_token %}
 
         <label for="restaurant">Restoran Seç:</label>
-        <select id="restaurant" name="restaurant" required>
+        <select id="restaurant" name="restaurant" required style="width:100%;">
             <option value="">Restoran seçiniz...</option>
             {% for restaurant in restaurants %}
-            <option value="{{ restaurant.id }}">{{ restaurant.name }}</option>
+                <option value="{{ restaurant.id }}">{{ restaurant.name }}</option>
             {% endfor %}
         </select>
-        
 
         <label for="rating">Puan:</label>
         <select id="rating" name="rating" required>
             {% for i in "12345" %}
-            <option value="{{ i }}">{{ i }}</option>
+                <option value="{{ i }}">{{ i }}</option>
             {% endfor %}
         </select>
 
@@ -29,18 +28,20 @@
     </form>
 </div>
 
-<!-- Aramalı dropdown için Select2 kütüphanesi -->
+<!-- Gerekli kütüphaneler -->
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<!-- Select2 CSS & JS -->
 <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 
 <script>
-    // Sayfa yüklenince restaurant select'ine select2 uygula
     $(document).ready(function() {
         $('#restaurant').select2({
-            placeholder: "Restoran seç...",
+            placeholder: "Restoran ara...",
             allowClear: true
         });
     });
 </script>
-
 {% endblock %}
