@@ -1,54 +1,240 @@
-/* Temel Ayarlar */
+/* Genel Stil */
 body {
-    font-family: 'Montserrat', sans-serif;
-    background-color: #FFF3E0;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(to bottom, #c0e0c1, #f2fde6);
     color: #333;
-    text-align: center;
     margin: 0;
     padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-/* Dashboard */
-.dashboard-container {
-    padding: 30px;
-    max-width: 900px;
-    margin: auto;
-    background-color: #f8fdf6;
-    border-radius: 16px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.05);
+/* Navbar */
+.navbar {
+    background: linear-gradient(to right, #266129, #77bb66);
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 50px;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+    z-index: 100;
 }
 
-.dashboard-container h1 {
-    font-size: 28px;
+.navbar .logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background-color: #388e3c;
+    padding: 8px 18px;
+    border-radius: 30px;
+    font-size: 18px;
+    font-weight: bold;
+    color: white !important;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.navbar .logo:hover {
+    background-color: #2e7d32;
+    transform: translateY(-2px);
+}
+
+.navbar .search-box {
+    background: white;
+    padding: 10px 15px;
+    border-radius: 25px;
+    border: 1px solid #ccc;
+    width: 300px;
+    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
+    transition: 0.3s;
+}
+
+.navbar .search-box {
+    background: white;
+    padding: 10px 20px;
+    border-radius: 30px;
+    width: 300px;
+    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.15);
+    display: flex;
+    align-items: center;
+}
+
+.navbar .search-box input {
+    background: transparent;
+    border: none;
+    outline: none;
+    width: 100%;
+    font-size: 16px;
+    color: #333;
+}
+
+
+.navbar .buttons {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 6px 14px;
+    border-radius: 25px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Buton Stilleri */
+a.btn, button.btn {
+    background-color: #2e7d32;
+    color: white;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 20px;
+    font-weight: bold;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+a.btn:hover, button.btn:hover {
+    background-color: #1b5e20;
+}
+
+a.btn-outline, button.btn-outline {
+    background-color: transparent;
+    color: white;
+    border: 2px solid white;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-weight: bold;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+a.btn-outline:hover, button.btn-outline:hover {
+    background-color: white;
     color: #2e7d32;
 }
 
-.dashboard-container p {
-    color: #555;
-    font-size: 18px;
+/* Hero Block */
+.hero-block {
+    background: linear-gradient(135deg, #a5d6a7, #66bb6a);
+    padding: 60px 40px;
+    border-radius: 20px;
+    box-shadow: 0px 15px 30px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    margin-top: 160px;
+    max-width: 700px;
+    width: 90%;
+    transition: 0.3s;
 }
 
-/* Kartlar */
+.hero-block:hover {
+    transform: scale(1.02);
+    box-shadow: 0px 20px 40px rgba(0, 0, 0, 0.25);
+}
+
+.hero-block h1 {
+    font-size: 34px;
+    color: #1b5e20;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.hero-block p {
+    font-size: 18px;
+    color: #2e7d32;
+    font-weight: 500;
+}
+
+/* Containerlar */
+.login-container, .register-container, .profile-container, .welcome-container {
+    background: linear-gradient(135deg, #c8e6c9, #81c784);
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0px 12px 25px rgba(0, 0, 0, 0.2);
+    max-width: 500px;
+    width: 90%;
+    margin-top: 160px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.welcome-container {
+    max-width: 700px;
+}
+
+.profile-container {
+    background: linear-gradient(135deg, #c8e6c9, #a5d6a7);
+}
+
+.login-container input,
+.register-container input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    box-shadow: inset 0px 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.login-container button,
+.register-container button {
+    background: #2e7d32;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.login-container button:hover,
+.register-container button:hover {
+    background: #1b5e20;
+}
+
+.login-container a,
+.register-container a {
+    color: #1b5e20;
+    font-weight: bold;
+    text-decoration: none;
+    margin-top: 10px;
+}
+
+.login-container a:hover,
+.register-container a:hover {
+    text-decoration: underline;
+}
+
+/* Home Dashboard Cardlar */
 .card-container {
     display: flex;
-    gap: 30px;
-    margin-top: 40px;
-    flex-wrap: wrap;
     justify-content: center;
+    flex-wrap: wrap;
+    gap: 30px;
+    margin-top: 60px;
 }
 
-.home-card {
-    background-color: #ffffff;
-    border-radius: 16px;
-    padding: 30px 20px;
+.home-card, .card {
+    background-color: white;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.1);
     width: 280px;
     text-align: center;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    transition: transform 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.home-card:hover {
+.home-card:hover, .card:hover {
     transform: translateY(-5px);
+    box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.15);
 }
 
 .card-icon {
@@ -56,67 +242,299 @@ body {
     margin-bottom: 15px;
 }
 
-.home-card h3 {
-    margin: 10px 0;
-    font-size: 20px;
+.card h3, .home-card h3 {
     color: #2e7d32;
 }
 
-.home-card p {
-    color: #666;
-    font-size: 15px;
-    margin-bottom: 15px;
+.card p, .home-card p {
+    color: #555;
 }
 
-/* Kart linkleri (buton gibi görünsün) */
-.card-link {
-    display: inline-block;
+.card-link, .card .btn {
+    background-color: #2e7d32;
+    color: white;
     padding: 10px 20px;
-    background-color: #ff6f00;
-    color: white;
-    border-radius: 8px;
-    text-decoration: none;
+    border-radius: 20px;
     font-weight: bold;
-    transition: background-color 0.2s ease;
-}
-
-.card-link:hover {
-    background-color: #e65100;
-    color: white;
-}
-
-/* Navbar Logo */
-.logo {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    background-color: #4CAF50;
-    padding: 8px 16px;
-    border-radius: 30px;
     text-decoration: none;
-    color: white;
-    font-weight: bold;
-    font-size: 18px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    transition: background-color 0.3s ease, transform 0.2s ease;
+    transition: background-color 0.3s ease;
+    display: inline-block;
 }
 
-.logo:hover {
-    background-color: #43a047;
-    transform: translateY(-2px);
-    color: #fff;
+.card-link:hover, .card .btn:hover {
+    background-color: #1b5e20;
 }
 
 /* Responsive */
 @media (max-width: 768px) {
-    .card-container {
+    .navbar {
         flex-direction: column;
-        align-items: center;
+        padding: 15px;
+    }
+
+    .navbar .buttons {
+        flex-direction: column;
+        margin-top: 10px;
+    }
+
+    .hero-block, .login-container, .register-container, .profile-container, .welcome-container {
+        padding: 30px 20px;
+    }
+
+    .search-box input {
+        width: 100%;
     }
 }
-.icon {
-    font-size: 20px;
+
+/* Animasyon */
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
-.brand-text {
+
+.home-title {
+    font-size: 28px;
+    font-weight: 600;
+    color: #1b5e20;
+    margin-top: 120px;
+    margin-bottom: 40px;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.1);
+    animation: fadeInDown 0.6s ease-in-out;
+}
+
+.yorum-formu-container {
+    max-width: 500px;
+    margin: 100px auto 50px auto;
+    background-color: #f0fdf4;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0px 6px 20px rgba(0,0,0,0.1);
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.yorum-formu-container h2 {
+    margin-bottom: 20px;
+    color: #2e7d32;
+}
+
+.yorum-formu-container form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.yorum-formu-container label {
+    margin-top: 10px;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #333;
+}
+
+.yorum-formu-container input[type="text"],
+.yorum-formu-container select,
+.yorum-formu-container textarea {
+    width: 100%;
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    margin-bottom: 15px;
+}
+
+.yorum-formu-container button {
+    margin-top: 20px;
+    background-color: #2e7d32;
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 10px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.yorum-formu-container button:hover {
+    background-color: #1b5e20;
+}
+.basvuru-form-container {
+    max-width: 600px;
+    margin: 100px auto 50px auto;
+    background-color: #f0fdf4;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0px 6px 20px rgba(0,0,0,0.1);
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.basvuru-form-container h2 {
+    margin-bottom: 20px;
+    color: #2e7d32;
+}
+
+.basvuru-form-container form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+}
+
+.basvuru-form-container label {
+    margin-top: 10px;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #333;
+    text-align: left;
+}
+
+.basvuru-form-container textarea {
+    width: 100%;
+    padding: 12px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    margin-bottom: 20px;
+    resize: vertical;
+    font-size: 15px;
+}
+
+.submit-button {
+    background-color: #2e7d32;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 10px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.submit-button:hover {
+    background-color: #1b5e20;
+}
+.basvuru-container {
+    max-width: 800px;
+    margin: 100px auto 50px;
+    padding: 20px;
+    text-align: center;
+}
+
+.basvuru-container h2 {
+    margin-bottom: 30px;
+    color: #2e7d32;
+}
+
+.basvuru-karti {
+    background-color: #f0fdf4;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.basvuru-karti p {
+    margin: 10px 0;
+    color: #333;
+}
+
+.butonlar {
+    display: flex;
+    justify-content: flex-start;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.onayla-button, .reddet-button {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.onayla-button {
+    background-color: #2e7d32;
+    color: white;
+}
+
+.onayla-button:hover {
+    background-color: #1b5e20;
+}
+
+.reddet-button {
+    background-color: #c62828;
+    color: white;
+}
+
+.reddet-button:hover {
+    background-color: #b71c1c;
+}
+
+.status-pending {
+    color: #ff9800;
+    font-weight: bold;
+}
+
+.status-approved {
+    color: #2e7d32;
+    font-weight: bold;
+}
+
+.status-rejected {
+    color: #c62828;
+    font-weight: bold;
+}
+.yorum-inceleme-container {
+    max-width: 800px;
+    margin: 100px auto 50px;
+    padding: 20px;
+    text-align: center;
+}
+
+.yorum-karti {
+    background-color: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    padding: 20px;
+    margin-bottom: 25px;
+    text-align: left;
+}
+
+.yorum-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #2e7d32;
+}
+
+.yorum-tarih {
+    font-size: 13px;
+    color: #666;
+}
+
+.yorum-puan {
     font-size: 18px;
+    color: #fbc02d;
+    margin-bottom: 10px;
 }
+
+.yorum-metin {
+    color: #333;
+    margin-bottom: 15px;
+}
+
+   

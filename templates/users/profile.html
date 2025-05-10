@@ -1,7 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
 
-
 {% block content %}
 <style>
     .profile-box {
@@ -66,7 +65,7 @@
     {% if user.profile_picture %}
         <img src="{{ user.profile_picture.url }}" alt="Profil Fotoğrafı" class="profile-pic">
     {% else %}
-        <img src="{% static 'images/default_profile.png' %}" alt="Varsayılan Profil" class="profile-pic">
+        <img src="{% static 'images/default_profile.png' %}" alt="Varsayılan Profil Fotoğrafı" class="profile-pic">
     {% endif %}
 
     <h2>Profil Bilgilerin</h2>
