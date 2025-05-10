@@ -28,6 +28,10 @@ class Restaurant(models.Model):
     def __str__(self):
         return self.name
 
+    class Meta:
+        ordering = ['name']  # Alfabetik sıraya göre sıralar
+
+
 # ✍️ Yorum modeli
 class Review(models.Model):
     RATING_CHOICES = [(i, str(i)) for i in range(1, 6)]

@@ -1,17 +1,20 @@
 from django.contrib import admin
-from .models import User
+from .models import User, Review, Application, Restaurant
 
-admin.site.register(User)
+@admin.register(User)
+class UserAdmin(admin.ModelAdmin):
+    pass
 
-from .models import Review
-admin.site.register(Review)
-from .models import Review, User, Application
+@admin.register(Review)
+class ReviewAdmin(admin.ModelAdmin):
+    pass
 
+@admin.register(Application)
+class ApplicationAdmin(admin.ModelAdmin):
+    pass
 
-admin.site.register(Application)
-# sgapp/admin.py
-
-from django.contrib import admin
-from .models import Restaurant
-
-admin.site.register(Restaurant)
+@admin.register(Restaurant)
+class RestaurantAdmin(admin.ModelAdmin):
+    list_display = ('name', 'address')  # Admin paneli sütunları
+    search_fields = ('name', 'address')  # Arama alanı
+    ordering = ('name',)  # Alfabetik sıralama

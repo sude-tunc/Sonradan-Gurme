@@ -328,3 +328,7 @@ def kullanici_sil_view(request, user_id):
     if user.role != 'moderator':  # kendisi dışındaki herkes silinebilir
         user.delete()
     return redirect('kullanici_listesi')
+
+def restoran_listesi(request):
+    restoranlar = Restaurant.objects.all().order_by('name')
+    return render(request, 'restoranlar.html', {'restoranlar': restoranlar})
