@@ -26,12 +26,20 @@
             {% if user.is_authenticated %}
                 {% if user.role == "moderator" %}
                     <a href="{% url 'moderator_panel' %}" class="btn">Panelim</a>
+                    
+                    <!-- 🔔 Bildirimler -->
+                    <a href="{% url 'yorum_inceleme' %}" class="btn">
+                        🔔 Yorumlar ({{ bekleyen_yorum_sayisi|default:0 }})
+                    </a>
+                    <a href="{% url 'basvuru_inceleme' %}" class="btn">
+                        📝 Başvurular ({{ bekleyen_basvuru_sayisi|default:0 }})
+                    </a>
                 {% elif user.role == "gurme" %}
                     <a href="{% url 'gurme_dashboard' %}" class="btn">Panelim</a>
                 {% else %}
                     <a href="{% url 'home' %}" class="btn">Panelim</a>
                 {% endif %}
-                
+
                 <a href="{% url 'profile' %}" class="btn">Profil</a>
                 <form method="POST" action="{% url 'logout' %}" style="display:inline;">
                     {% csrf_token %}
