@@ -156,7 +156,7 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587 #güvenli gönnderim için 587 
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'sude11tunc@gmail.com'
-EMAIL_HOST_PASSWORD = 'tvup powx ayde anwp' #güvenlik açığı yaratıyor bunu düzenlicez # boşluksuz yazılacak 
+EMAIL_HOST_PASSWORD = 'tvup powx ayde anwp' #güvenlik açığı yaratıyor bunu düzenlicez # boşluksuz yazılacak #boslsuksuz yazınca çalşimo
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 
 AUTH_USER_MODEL = 'sgapp.User'

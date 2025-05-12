@@ -325,7 +325,7 @@ def kullanici_listesi_view(request):
 @moderator_required
 def kullanici_sil_view(request, user_id):
     user = get_object_or_404(User, id=user_id)
-    if user.role != 'moderator':  # kendisi dışındaki herkes silinebilir
+    if user.role != 'moderator':  # moderatör dışdındakileiri silebilio
         user.delete()
     return redirect('kullanici_listesi')
 
