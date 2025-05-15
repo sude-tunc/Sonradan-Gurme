@@ -38,6 +38,7 @@ urlpatterns = [
     path('yorum/<int:review_id>/karar/', views.yorum_karar_ver_view, name='yorum_karar_ver'),
     path('moderator/basvuru/<int:application_id>/karar/', views.basvuru_karar_ver_view, name='basvuru_karar_ver'),
     path('bildirimler/', views.bildirimlerim_view, name='bildirimlerim'),
+    path('moderator/yorum/<int:review_id>/duzenle/', views.yorum_duzenle_view, name='yorum_duzenle'),
 
 
 

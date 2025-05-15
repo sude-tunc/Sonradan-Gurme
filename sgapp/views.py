@@ -413,3 +413,28 @@ from .models import ModeratorFeedback
 def bildirimlerim_view(request):
     bildirimler = ModeratorFeedback.objects.filter(user=request.user).order_by('-created_at')
     return render(request, 'users/bildirimlerim.html', {'bildirimler': bildirimler})
+
+from .models import Review
+from django import forms
+
+class YorumDuzenleForm(forms.ModelForm):
+    class Meta:
+        model = Review
+        fields = ['rating', 'comment']
+        labels = {
+            'rating': 'Puan (1-5)',
+            'comment': 'Yorum Metni',
+        }
+
+def yorum_duzenle_view(request, review_id):
+    yorum = get_object_or_404(Review, id=review_id)
+
+    if request.method == 'POST':
+        form = YorumDuzenleForm(request.POST, instance=yorum)
+        if form.is_valid():
+            form.save()
+            return redirect('yorum_inceleme')
+    else:
+        form = YorumDuzenleForm(instance=yorum)
+
+    return render(request, 'moderator/yorum_duzenle.html', {'form': form, 'yorum': yorum})

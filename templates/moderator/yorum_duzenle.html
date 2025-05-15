@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div style="max-width: 600px; margin: 60px auto; font-family: 'Segoe UI', sans-serif;">
+    <h2>✏️ Yorumu Düzenle</h2>
+
+    <form method="post">
+        {% csrf_token %}
+        <div style="margin-bottom: 15px;">
+            <label for="id_rating">Puan:</label><br>
+            {{ form.rating }}
+        </div>
+        <div style="margin-bottom: 15px;">
+            <label for="id_comment">Yorum Metni:</label><br>
+            {{ form.comment }}
+        </div>
+
+        <button type="submit" style="padding: 10px 20px; background-color: #2e7d32; color: white; border: none; border-radius: 6px; cursor: pointer;">Kaydet</button>
+        <a href="{% url 'yorum_inceleme' %}" style="margin-left: 10px; color: #888;">İptal</a>
+    </form>
+</div>
+{% endblock %}

@@ -69,6 +69,21 @@
     .btn-reddet {
         background-color: #f44336;
     }
+
+    .duzenle-btn {
+        display: inline-block;
+        margin-top: 10px;
+        background-color: #1976d2;
+        color: white;
+        padding: 6px 14px;
+        border-radius: 6px;
+        text-decoration: none;
+        font-size: 14px;
+    }
+
+    .duzenle-btn:hover {
+        background-color: #0d47a1;
+    }
 </style>
 
 <div class="yorum-inceleme-container">
@@ -105,6 +120,8 @@
 
                     <button type="submit" class="submit-button btn-onayla">Kararı Uygula</button>
                 </form>
+
+                <a href="{% url 'yorum_duzenle' yorum.id %}" class="duzenle-btn">✏️ Düzenle</a>
             </div>
         {% endfor %}
     {% else %}
@@ -112,3 +129,4 @@
     {% endif %}
 </div>
 {% endblock %}
+<!--9000ı9ı8789gftttttthgtfrrrrrr.ççççççççççççllllllç-->
