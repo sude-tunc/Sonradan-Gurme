@@ -1,6 +1,67 @@
 {% extends "base.html" %}
 
 {% block content %}
+<style>
+    .basvuru-container {
+        max-width: 800px;
+        margin: 40px auto;
+        font-family: 'Segoe UI', sans-serif;
+    }
+
+    .basvuru-karti {
+        background: #f4f4f4;
+        padding: 20px;
+        margin-bottom: 20px;
+        border-radius: 10px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .butonlar {
+        margin-top: 10px;
+    }
+
+    select, textarea {
+        width: 100%;
+        padding: 8px;
+        margin: 10px 0;
+        border-radius: 6px;
+        border: 1px solid #ccc;
+        font-size: 14px;
+    }
+
+    .karar-button {
+        padding: 8px 16px;
+        border: none;
+        border-radius: 6px;
+        font-size: 14px;
+        color: white;
+        cursor: pointer;
+    }
+
+    .onayla-button {
+        background-color: #4caf50;
+    }
+
+    .reddet-button {
+        background-color: #f44336;
+    }
+
+    .status-approved {
+        color: green;
+        font-weight: bold;
+    }
+
+    .status-rejected {
+        color: red;
+        font-weight: bold;
+    }
+
+    .status-pending {
+        color: #666;
+        font-weight: bold;
+    }
+</style>
+
 <div class="basvuru-container">
     <h2>📝 Gurme Başvuruları</h2>
 
@@ -10,10 +71,19 @@
                 <p><strong>{{ basvuru.user.username }}</strong> - "{{ basvuru.message }}"</p>
                 <p>Durum: <span class="status-{{ basvuru.status }}">{{ basvuru.get_status_display }}</span></p>
 
-                <form method="post" action="{% url 'basvuru_durum_degistir' basvuru.id %}" class="butonlar">
+                <form method="post" action="{% url 'basvuru_karar_ver' basvuru.id %}" class="butonlar">
                     {% csrf_token %}
-                    <button type="submit" name="action" value="approve" class="onayla-button">Onayla</button>
-                    <button type="submit" name="action" value="reject" class="reddet-button">Reddet</button>
+
+                    <label>Karar:</label>
+                    <select name="karar" required>
+                        <option value="approved">✅ Onayla</option>
+                        <option value="rejected">❌ Reddet</option>
+                    </select>
+
+                    <label>Geri Bildirim (isteğe bağlı):</label>
+                    <textarea name="feedback" rows="3" placeholder="Neden reddedildiğini açıklayabilirsin..."></textarea>
+
+                    <button type="submit" class="karar-button onayla-button">Kararı Uygula</button>
                 </form>
             </div>
         {% endfor %}

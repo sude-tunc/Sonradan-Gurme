@@ -383,3 +383,27 @@ def yorum_karar_ver_view(request, review_id):
         )
 
     return redirect('yorum_inceleme')  # veya yorum listesi sayfasının URL adı neyse onu yaz
+
+from .models import Application  # varsa zaten yukarda, eklemezsen hata verir
+
+def basvuru_karar_ver_view(request, application_id):
+    basvuru = get_object_or_404(Application, id=application_id)
+
+    if request.method == "POST":
+        karar = request.POST.get("karar")  # 'approved' ya da 'rejected'
+        geri_bildirim = request.POST.get("feedback")
+
+        basvuru.status = karar
+        basvuru.reviewed_by = request.user
+        basvuru.save()
+
+        ModeratorFeedback.objects.create(
+            user=basvuru.user,
+            content_type=ContentType.objects.get_for_model(Application),
+            object_id=basvuru.id,
+            decision=karar,
+            feedback_text=geri_bildirim or ""
+        )
+
+    return redirect('basvuru_inceleme')  # listelendiği sayfanın name'i neyse onu yaz
+

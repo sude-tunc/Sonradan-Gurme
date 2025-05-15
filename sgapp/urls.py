@@ -36,6 +36,7 @@ urlpatterns = [
     path('moderator/kullanicilar/', views.kullanici_listesi_view, name='kullanici_listesi'),
     path('moderator/kullanici/<int:user_id>/sil/', views.kullanici_sil_view, name='kullanici_sil'),
     path('yorum/<int:review_id>/karar/', views.yorum_karar_ver_view, name='yorum_karar_ver'),
+    path('moderator/basvuru/<int:application_id>/karar/', views.basvuru_karar_ver_view, name='basvuru_karar_ver'),
 
 
 
