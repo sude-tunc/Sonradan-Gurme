@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="bildirimler-container" style="max-width: 700px; margin: 50px auto; font-family: 'Segoe UI', sans-serif;">
+    <h2>🔔 Bildirimlerim</h2>
+
+    {% if bildirimler %}
+        {% for bildirim in bildirimler %}
+            <div style="background: #f9f9f9; padding: 15px; margin-bottom: 15px; border-radius: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+                <p><strong>İçerik:</strong> {{ bildirim.content_type.name|capfirst }} (ID: {{ bildirim.object_id }})</p>
+                <p><strong>Durum:</strong> {{ bildirim.get_decision_display }}</p>
+                {% if bildirim.feedback_text %}
+                    <p><strong>Geri Bildirim:</strong> {{ bildirim.feedback_text }}</p>
+                {% endif %}
+                <p style="font-size: 12px; color: #666;">{{ bildirim.created_at|date:"d.m.Y H:i" }}</p>
+            </div>
+        {% endfor %}
+    {% else %}
+        <p>Henüz bir bildirimin yok.</p>
+    {% endif %}
+</div>
+{% endblock %}

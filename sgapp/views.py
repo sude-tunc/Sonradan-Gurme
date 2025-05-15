@@ -407,3 +407,9 @@ def basvuru_karar_ver_view(request, application_id):
 
     return redirect('basvuru_inceleme')  # listelendiği sayfanın name'i neyse onu yaz
 
+from .models import ModeratorFeedback
+
+@login_required
+def bildirimlerim_view(request):
+    bildirimler = ModeratorFeedback.objects.filter(user=request.user).order_by('-created_at')
+    return render(request, 'users/bildirimlerim.html', {'bildirimler': bildirimler})

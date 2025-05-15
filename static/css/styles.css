@@ -537,4 +537,58 @@ a.btn-outline:hover, button.btn-outline:hover {
     margin-bottom: 15px;
 }
 
-   
+   .bildirimler-container {
+    max-width: 700px;
+    margin: 50px auto;
+    padding: 20px;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+.bildirim-kutu {
+    background-color: #f2fef3;
+    border-left: 5px solid #4CAF50;
+    padding: 15px 20px;
+    margin-bottom: 15px;
+    border-radius: 10px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+    transition: background-color 0.3s ease;
+}
+
+.bildirim-kutu:hover {
+    background-color: #e8f5e9;
+}
+
+.bildirim-kutu p {
+    margin: 5px 0;
+    font-size: 15px;
+    color: #333;
+}
+
+.bildirim-kutu .tarih {
+    font-size: 12px;
+    color: #888;
+}
+
+.bildirim-kutu .durum-onaylandi {
+    color: #2e7d32;
+    font-weight: bold;
+}
+
+.bildirim-kutu .durum-reddedildi {
+    color: #c62828;
+    font-weight: bold;
+}
+.btn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 8px 14px;
+    border-radius: 8px;
+    text-decoration: none;
+    margin-left: 10px;
+    font-weight: bold;
+    transition: 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #388e3c;
+}
