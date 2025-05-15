@@ -332,3 +332,54 @@ def kullanici_sil_view(request, user_id):
 def restoran_listesi(request):
     restoranlar = Restaurant.objects.all().order_by('name')
     return render(request, 'restoranlar.html', {'restoranlar': restoranlar})
+
+from django.contrib.contenttypes.models import ContentType
+from .models import ModeratorFeedback, Review
+
+def yorum_onayla_view(request, review_id):
+    yorum = get_object_or_404(Review, id=review_id)
+    
+    if request.method == "POST":
+        karar = request.POST.get("karar")  # 'approved' ya da 'rejected'
+        geri_bildirim = request.POST.get("feedback")  # Sebep
+        
+        yorum.status = karar
+        yorum.moderator = request.user
+        yorum.save()
+
+        # Feedback oluştur
+        ModeratorFeedback.objects.create(
+            user=yorum.user,
+            content_type=ContentType.objects.get_for_model(Review),
+            object_id=yorum.id,
+            decision=karar,
+            feedback_text=geri_bildirim or "",
+        )
+
+        return redirect('yorum_listesi')  # Nereden geldiysen oraya dön
+
+from django.shortcuts import get_object_or_404, redirect
+from django.contrib.contenttypes.models import ContentType
+from .models import Review, ModeratorFeedback
+
+def yorum_karar_ver_view(request, review_id):
+    yorum = get_object_or_404(Review, id=review_id)
+
+    if request.method == "POST":
+        karar = request.POST.get("karar")
+        geri_bildirim = request.POST.get("feedback")
+
+        yorum.status = karar
+        yorum.moderator = request.user
+        yorum.save()
+
+        # Feedback kaydı oluştur
+        ModeratorFeedback.objects.create(
+            user=yorum.user,
+            content_type=ContentType.objects.get_for_model(Review),
+            object_id=yorum.id,
+            decision=karar,
+            feedback_text=geri_bildirim or ""
+        )
+
+    return redirect('yorum_inceleme')  # veya yorum listesi sayfasının URL adı neyse onu yaz

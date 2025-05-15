@@ -44,3 +44,4 @@ class ProfileUpdateForm(forms.ModelForm):
             'bio': forms.Textarea(attrs={'rows': 4, 'placeholder': 'Kendini anlat...'}),
             'favorite_dish': forms.TextInput(attrs={'placeholder': 'En sevdiğin yemek'}),
         }
+

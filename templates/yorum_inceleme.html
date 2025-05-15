@@ -39,30 +39,35 @@
         margin-bottom: 15px;
     }
 
-    .yorum-buttons a {
-        margin-right: 10px;
-        padding: 6px 12px;
-        text-decoration: none;
+    form.yorum-form {
+        margin-top: 10px;
+    }
+
+    textarea,
+    select {
+        width: 100%;
+        padding: 8px;
+        margin: 6px 0 12px;
+        border-radius: 6px;
+        border: 1px solid #ccc;
+        font-size: 14px;
+    }
+
+    .submit-button {
+        padding: 8px 16px;
+        border: none;
         border-radius: 6px;
         font-size: 14px;
         color: white;
-        transition: 0.2s ease;
+        cursor: pointer;
     }
 
     .btn-onayla {
         background-color: #4caf50;
     }
 
-    .btn-onayla:hover {
-        background-color: #388e3c;
-    }
-
     .btn-reddet {
         background-color: #f44336;
-    }
-
-    .btn-reddet:hover {
-        background-color: #d32f2f;
     }
 </style>
 
@@ -86,10 +91,20 @@
 
                 <p class="yorum-metin">{{ yorum.comment }}</p>
 
-                <div class="yorum-buttons">
-                    <a href="{% url 'yorum_onayla' yorum.id %}" class="btn-onayla">✅ Onayla</a>
-                    <a href="{% url 'yorum_reddet' yorum.id %}" class="btn-reddet">❌ Reddet</a>
-                </div>
+                <form method="post" action="{% url 'yorum_karar_ver' yorum.id %}" class="yorum-form">
+                    {% csrf_token %}
+
+                    <label>Karar:</label>
+                    <select name="karar" required>
+                        <option value="approved">✅ Onayla</option>
+                        <option value="rejected">❌ Reddet</option>
+                    </select>
+
+                    <label>Geri Bildirim (isteğe bağlı):</label>
+                    <textarea name="feedback" rows="3" placeholder="Neden reddedildiğini açıklayabilirsin..."></textarea>
+
+                    <button type="submit" class="submit-button btn-onayla">Kararı Uygula</button>
+                </form>
             </div>
         {% endfor %}
     {% else %}

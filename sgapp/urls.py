@@ -35,6 +35,8 @@ urlpatterns = [
     path('moderator/yorum/<int:yorum_id>/reddet/', views.yorum_reddet_view, name='yorum_reddet'),
     path('moderator/kullanicilar/', views.kullanici_listesi_view, name='kullanici_listesi'),
     path('moderator/kullanici/<int:user_id>/sil/', views.kullanici_sil_view, name='kullanici_sil'),
+    path('yorum/<int:review_id>/karar/', views.yorum_karar_ver_view, name='yorum_karar_ver'),
+
 
 
 
