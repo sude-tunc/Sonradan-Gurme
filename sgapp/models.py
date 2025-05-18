@@ -37,9 +37,11 @@ class Review(models.Model):
     RATING_CHOICES = [(i, str(i)) for i in range(1, 6)]
 
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    restaurant = models.ForeignKey('Restaurant', on_delete=models.CASCADE)  # 👈 Tırnak içinde!
+    restaurant = models.ForeignKey('Restaurant', on_delete=models.CASCADE)
     comment = models.TextField()
     rating = models.IntegerField(choices=RATING_CHOICES)
+    image = models.ImageField(upload_to='review_images/', blank=True, null=True)
+    receipt = models.ImageField(upload_to='review_receipts/', blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
     status = models.CharField(max_length=20, choices=[
         ('pending', 'Bekliyor'),
@@ -49,6 +51,7 @@ class Review(models.Model):
 
     def __str__(self):
         return f"{self.user.username} - {self.restaurant.name} - {self.rating}"
+
 
 # Gurme başvurusu modeli
 class Application(models.Model):

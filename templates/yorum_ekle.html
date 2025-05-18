@@ -3,14 +3,14 @@
 {% block content %}
 <div class="yorum-formu-container">
     <h2>🍽️ Yorum Ekle</h2>
-    <form method="post">
+    <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
 
         <label for="restaurant">Restoran Seç:</label>
-        <select id="restaurant" name="restaurant" required style="width:100%;">
+        <select id="restaurant" name="restaurant" class="select2" required style="width:100%;">
             <option value="">Restoran seçiniz...</option>
             {% for restaurant in restaurants %}
-                <option value="{{ restaurant.id }}">{{ restaurant.name }}</option>
+                <option value="{{ restaurant.id }}">{{ restaurant.name|default:'(isimsiz restoran)' }}</option>
             {% endfor %}
         </select>
 
@@ -24,15 +24,18 @@
         <label for="comment">Yorum:</label>
         <textarea id="comment" name="comment" placeholder="Deneyimini yaz..." rows="5" required></textarea>
 
+        <label for="image">Yemek Fotoğrafı:</label>
+        <input type="file" name="image" accept="image/*">
+
+        <label for="receipt">Fiş/Fatura:</label>
+        <input type="file" name="receipt" accept="image/*">
+
         <button type="submit">Gönder</button>
     </form>
 </div>
 
 <!-- Gerekli kütüphaneler -->
-<!-- jQuery -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
-<!-- Select2 CSS & JS -->
 <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 
@@ -40,7 +43,8 @@
     $(document).ready(function() {
         $('#restaurant').select2({
             placeholder: "Restoran ara...",
-            allowClear: true
+            allowClear: true,
+            width: '100%'  // 👈 GÖZÜKMEME sorununu çözer!
         });
     });
 </script>

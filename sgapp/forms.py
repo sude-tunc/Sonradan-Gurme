@@ -45,3 +45,13 @@ class ProfileUpdateForm(forms.ModelForm):
             'favorite_dish': forms.TextInput(attrs={'placeholder': 'En sevdiğin yemek'}),
         }
 
+from django import forms
+from .models import Review
+
+class ReviewForm(forms.ModelForm):
+    class Meta:
+        model = Review
+        fields = ['restaurant', 'comment', 'rating', 'image', 'receipt']
+        widgets = {
+            'comment': forms.Textarea(attrs={'rows': 4}),
+        }

@@ -1,15 +1,17 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div style="max-width: 600px; margin: 60px auto; font-family: 'Segoe UI', sans-serif;">
+
+
+<div class="duzenle-container">
     <h2>📝 Yorumu Düzenle</h2>
 
-    <form method="post">
+    <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
         {{ form.as_p }}
 
-        <button type="submit" style="padding: 10px 20px; background-color: #2e7d32; color: white; border: none; border-radius: 6px; cursor: pointer;">Kaydet</button>
-        <a href="{% url 'yorum_inceleme' %}" style="margin-left: 10px; color: #888;">İptal</a>
+        <button type="submit">Kaydet</button>
+        <a href="{% url 'yorum_inceleme' %}" class="iptal-link">İptal</a>
     </form>
 </div>
 {% endblock %}

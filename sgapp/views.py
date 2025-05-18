@@ -124,27 +124,30 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from .models import Review, Restaurant
 
+from .forms import ReviewForm  # forms.py içine biraz önce eklediğimiz ReviewForm
+
+from .models import Restaurant  # ⬅️ bu satır da olmalı
+
 @login_required
 def yorum_ekle_view(request):
     if request.method == 'POST':
-        restaurant_id = request.POST.get('restaurant')
-        rating = request.POST.get('rating')
-        comment = request.POST.get('comment')
+        form = ReviewForm(request.POST, request.FILES)
+        if form.is_valid():
+            review = form.save(commit=False)
+            review.user = request.user
+            review.status = 'pending'  # yorumu beklemeye al
+            review.save()
+            return redirect('gurme_dashboard')
+    else:
+        form = ReviewForm()
 
-        restoran = get_object_or_404(Restaurant, id=restaurant_id)
+    restaurants = Restaurant.objects.all()  # ⬅️ eksik olan kısım
 
-        Review.objects.create(
-            user=request.user,
-            restaurant=restoran,
-            rating=rating,
-            comment=comment,
-            status='pending'
-        )
-        return redirect('gurme_dashboard')
+    return render(request, 'yorum_ekle.html', {
+        'form': form,
+        'restaurants': restaurants  # ⬅️ HTML tarafı bunu bekliyor
+    })
 
-    # GET isteği: restoranları listele
-    restoranlar = Restaurant.objects.all()
-    return render(request, 'yorum_ekle.html', {'restaurants': restoranlar})
 
 
 from django.shortcuts import render, redirect
