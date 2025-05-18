@@ -3,61 +3,85 @@
 {% block content %}
 <style>
     .basvuru-container {
-        max-width: 800px;
-        margin: 40px auto;
+        max-width: 900px;
+        margin: 60px auto;
         font-family: 'Segoe UI', sans-serif;
+        padding: 20px;
+    }
+
+    .basvuru-container h2 {
+        color: #2e7d32;
+        font-size: 2em;
+        margin-bottom: 30px;
+        text-align: center;
     }
 
     .basvuru-karti {
-        background: #f4f4f4;
-        padding: 20px;
-        margin-bottom: 20px;
-        border-radius: 10px;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        background: #f9f9f9;
+        padding: 24px;
+        margin-bottom: 24px;
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        border: 1px solid #e0e0e0;
+    }
+
+    .basvuru-karti strong {
+        font-size: 1.1em;
     }
 
     .butonlar {
-        margin-top: 10px;
+        margin-top: 16px;
     }
 
     select, textarea {
         width: 100%;
-        padding: 8px;
-        margin: 10px 0;
-        border-radius: 6px;
+        padding: 10px;
+        margin: 12px 0;
+        border-radius: 8px;
         border: 1px solid #ccc;
-        font-size: 14px;
+        font-size: 15px;
+        font-family: 'Segoe UI', sans-serif;
     }
 
     .karar-button {
-        padding: 8px 16px;
+        padding: 10px 20px;
         border: none;
-        border-radius: 6px;
-        font-size: 14px;
+        border-radius: 8px;
+        font-size: 15px;
+        font-weight: bold;
         color: white;
         cursor: pointer;
+        transition: background-color 0.2s ease;
     }
 
     .onayla-button {
-        background-color: #4caf50;
+        background-color: #2e7d32;
+    }
+
+    .onayla-button:hover {
+        background-color: #256b29;
     }
 
     .reddet-button {
-        background-color: #f44336;
+        background-color: #d32f2f;
+    }
+
+    .reddet-button:hover {
+        background-color: #b71c1c;
     }
 
     .status-approved {
-        color: green;
+        color: #2e7d32;
         font-weight: bold;
     }
 
     .status-rejected {
-        color: red;
+        color: #d32f2f;
         font-weight: bold;
     }
 
     .status-pending {
-        color: #666;
+        color: #999;
         font-weight: bold;
     }
 </style>
@@ -88,7 +112,7 @@
             </div>
         {% endfor %}
     {% else %}
-        <p>Henüz başvuru yok.</p>
+        <p style="text-align:center; color:#666;">Henüz başvuru yok.</p>
     {% endif %}
 </div>
 {% endblock %}

@@ -1,18 +1,62 @@
 {% extends "base.html" %}
+
 {% block content %}
-<h2>📝 Yorumlar</h2>
+<style>
+    .yorumlar-container {
+        max-width: 900px;
+        margin: 60px auto;
+        font-family: 'Segoe UI', sans-serif;
+        padding: 20px;
+    }
 
-{% if yorumlar %}
-    {% for yorum in yorumlar %}
-        <div class="yorum-karti">
-            <strong>{{ yorum.user.username }}</strong> 
-            <span>({{ yorum.created_at|date:"d.m.Y H:i" }})</span><br>
-            ⭐ {{ yorum.rating }}/5<br>
-            <p>{{ yorum.comment }}</p>
-        </div>
-    {% endfor %}
-{% else %}
-    <p>Henüz onaylı yorum bulunamadı.</p>
-{% endif %}
+    .yorumlar-container h2 {
+        font-size: 2em;
+        color: #2e7d32;
+        margin-bottom: 30px;
+        text-align: center;
+    }
 
+    .yorum-karti {
+        background-color: #ffffff;
+        border: 1px solid #ddd;
+        border-radius: 12px;
+        padding: 20px;
+        margin-bottom: 20px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.04);
+    }
+
+    .yorum-karti strong {
+        font-size: 1.1em;
+        color: #2e7d32;
+    }
+
+    .yorum-karti span {
+        font-size: 0.9em;
+        color: #888;
+        margin-left: 8px;
+    }
+
+    .yorum-karti p {
+        margin-top: 10px;
+        font-size: 1em;
+        color: #444;
+    }
+</style>
+
+<div class="yorumlar-container">
+    <h2>📝 Yorumlar</h2>
+
+    {% if yorumlar %}
+        {% for yorum in yorumlar %}
+            <div class="yorum-karti">
+                <strong>{{ yorum.user.username }}</strong> 
+                <span>({{ yorum.created_at|date:"d.m.Y H:i" }})</span><br>
+                ⭐ {{ yorum.rating }}/5<br>
+                <p>{{ yorum.comment }}</p>
+            </div>
+        {% endfor %}
+    {% else %}
+        <p style="text-align:center; color:#666;">Henüz onaylı yorum bulunamadı.</p>
+    {% endif %}
+</div>
 {% endblock %}

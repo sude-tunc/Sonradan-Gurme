@@ -1,6 +1,81 @@
 {% extends "base.html" %}
 
 {% block content %}
+<style>
+    .dashboard-container {
+        max-width: 1000px;
+        margin: 60px auto;
+        font-family: 'Segoe UI', sans-serif;
+        text-align: center;
+        padding: 20px;
+    }
+
+    .dashboard-container h1 {
+        font-size: 2.2em;
+        color: #2e7d32;
+        margin-bottom: 12px;
+    }
+
+    .dashboard-container p {
+        font-size: 1.1em;
+        color: #444;
+        margin-bottom: 40px;
+    }
+
+    .card-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 30px;
+    }
+
+    .home-card {
+        background-color: #f9f9f9;
+        border: 1px solid #e0e0e0;
+        border-radius: 16px;
+        padding: 30px;
+        width: 280px;
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.05);
+        transition: transform 0.2s ease;
+    }
+
+    .home-card:hover {
+        transform: scale(1.03);
+    }
+
+    .card-icon {
+        font-size: 2.5rem;
+        margin-bottom: 12px;
+    }
+
+    .home-card h3 {
+        font-size: 1.3em;
+        color: #333;
+        margin-bottom: 10px;
+    }
+
+    .home-card p {
+        font-size: 1em;
+        color: #666;
+        margin-bottom: 20px;
+    }
+
+    .card-link {
+        display: inline-block;
+        padding: 10px 16px;
+        background-color: #2e7d32;
+        color: white;
+        border-radius: 8px;
+        text-decoration: none;
+        font-weight: bold;
+        transition: background-color 0.2s ease;
+    }
+
+    .card-link:hover {
+        background-color: #256b29;
+    }
+</style>
+
 <div class="dashboard-container">
     <h1>👋 Merhaba {{ user.username }}!</h1>
     <p>Bugün yeni lezzetler keşfetmeye ne dersin?</p>
